@@ -1,0 +1,7 @@
+src/App.vue
+src/uni.scss
+src/pages.json
+src/components/easycom/uni-ui/
+
+src/lib/
+**/*.ts

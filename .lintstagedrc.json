@@ -1,0 +1,6 @@
+{
+  "src/**/*.(vue|js|ts)": [
+    "node_modules/.bin/prettier --config .prettierrc --write",
+    "node_modules/.bin/eslint --ext .js,.ts,.vue src --cache"
+  ]
+}
