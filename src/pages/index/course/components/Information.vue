@@ -3,62 +3,44 @@
     <view class="training-info-information__line">
       <view class="training-info-information__title">
         <view class="training-info-information__icon">
-          <image src="@/static/training/num.png"></image>
+          <image src="@/static/course/college.png"></image>
         </view>
-        <view>实训室编号</view>
+        <view>学院</view>
       </view>
-      <view>L03</view>
+      <view>智能制造技术学院</view>
     </view>
 
     <view class="training-info-information__line">
       <view class="training-info-information__title">
         <view class="training-info-information__icon">
-          <image src="@/static/training/admin.png"></image>
+          <image src="@/static/course/speciality.png"></image>
         </view>
-        <view>实训室管理员</view>
+        <view>专业</view>
       </view>
-      <view>刘思思</view>
+      <view>工业机器人技术</view>
     </view>
 
     <view class="training-info-information__line">
       <view class="training-info-information__title">
         <view class="training-info-information__icon">
-          <image src="@/static/training/status.png"></image>
+          <image src="@/static/course/period.png"></image>
         </view>
-        <view>实训室状态</view>
+        <view>课时</view>
       </view>
-      <view>空闲</view>
+      <view>2023.03.13-2023.05.01(13课时)</view>
     </view>
 
     <view class="training-info-information__line">
       <view class="training-info-information__title">
         <view class="training-info-information__icon">
-          <image src="@/static/training/phone.png"></image>
+          <image src="@/static/course/director.png"></image>
         </view>
-        <view>实训室管理员电话</view>
+        <view>负责人</view>
       </view>
-      <view>15912345667</view>
+      <view>范振铎</view>
     </view>
 
-    <view class="training-info-information__line">
-      <view class="training-info-information__title">
-        <view class="training-info-information__icon">
-          <image src="@/static/training/size.png"></image>
-        </view>
-        <view>实训室容量</view>
-      </view>
-      <view>0</view>
-    </view>
 
-    <view class="training-info-information__line">
-      <view class="training-info-information__title">
-        <view class="training-info-information__icon">
-          <image src="@/static/training/address.png"></image>
-        </view>
-        <view>实训室地址</view>
-      </view>
-      <view>清华楼</view>
-    </view>
 	</view>
 </template>
 

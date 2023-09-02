@@ -36,8 +36,24 @@
         "navigationBarTitleText": "实训中心详情",
         "navigationBarBackgroundColor": "#206CFF"
       }
+    },
+    {
+      "path": "pages/index/course/course",
+      "style": {
+        "navigationBarTitleText": "课程简介",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
+    },
+    {
+      "path": "pages/index/course/info",
+      "style": {
+        "navigationBarTitleText": "课程详情",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
     }
-    ],
+  ],
 
   "tabBar": {
     "color": "#999999",

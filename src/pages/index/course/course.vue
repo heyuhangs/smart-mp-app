@@ -1,18 +1,6 @@
 <template>
-  <view class="course">
-    <view class="title">
-      <view class="title__left">
-        <view class="title__mark"></view>
-        <text class="title__text">课程介绍</text>
-      </view>
-      <view class="title__right" @click="toCourse()">
-        <text class="title__arrow-text">查看更多</text>
-        <image class="title__arrow-icon" src="@/static/basic/back.png" />
-      </view>
-    </view>
-
     <view class="course__list">
-      <view v-for="item in 10" class="course__list-item">
+      <view v-for="item in 10" class="course__list-item" @click="toInfo()">
         <image
           class="course__list-img"
           src="https://tse1-mm.cn.bing.net/th/id/OIP-C.IrIqGdXe5UmEmWJEfllakwHaFj?w=269&h=201&c=7&r=0&o=5&dpr=2&pid=1.7" />
@@ -24,21 +12,25 @@
         </view>
       </view>
     </view>
-  </view>
 </template>
 
 <script setup>
-  function toCourse() {
-     uni.navigateTo({url: '/pages/index/course/course'})
+  function toInfo() {
+     uni.navigateTo({url: '/pages/index/course/info'})
   }
 </script>
 
 <style lang="scss" scoped>
 .course {
-  background-color: #fff;
-  border-radius: 15rpx;
-  overflow: hidden;
-  padding-bottom: 68rpx;
+  background-color: #f2f4f5;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 100rpx;
 
   &__list {
     box-sizing: border-box;

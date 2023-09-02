@@ -2,7 +2,7 @@
   <view class="training-info">
     <image class="training-info__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
       lazy-load="true" />
-    <view class="training-info__title">产研融合实训室</view>
+    <view class="training-info__title">数控机床</view>
 
     <view class="training-info__content">
       <!--tab-->
@@ -20,6 +20,9 @@
         <swiper-item class="swiper_item">
           <Information class="etmHights"></Information>
         </swiper-item>
+        <swiper-item class="swiper_item">
+          <Teachers class="etmHights"></Teachers>
+        </swiper-item>
       </swiper>
     </view>
   </view>
@@ -33,9 +36,12 @@
   } from 'vue'
   import Introduce from './components/Introduce.vue'
   import Information from './components/Information.vue'
+  import Teachers from './components/Teachers.vue'
+
   var tabBars = ref([
-    '实训室介绍',
-    '实训室信息'
+    '课程简介',
+    '课程信息',
+    '师资介绍'
   ])
   var navIndex = ref(0)
   var scrollTop = ref(0)
@@ -116,8 +122,8 @@
 
       .scroll-view-item {
         display: inline-block;
-        width: 24%;
-        margin: 0 13%;
+        width: 20%;
+        margin: 0 6%;
         text-align: center;
         line-height: 90rpx;
         font-size: 32rpx;

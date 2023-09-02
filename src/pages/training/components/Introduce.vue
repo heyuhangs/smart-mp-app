@@ -18,7 +18,7 @@
 <script setup>
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .training-info-introduce {
     color: #13161A;
     font-size: 35rpx;

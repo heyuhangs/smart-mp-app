@@ -21,7 +21,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .training {
     &__content {
       background-color: #f2f4f5;
