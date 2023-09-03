@@ -1,4 +1,5 @@
 <template>
+  <view class="course">
     <view class="course__list">
       <view v-for="item in 10" class="course__list-item" @click="toInfo()">
         <image
@@ -11,6 +12,7 @@
           >
         </view>
       </view>
+    </view>
     </view>
 </template>
 
@@ -30,12 +32,13 @@
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-bottom: 100rpx;
 
   &__list {
     box-sizing: border-box;
-    margin-top: 32rpx;
-    padding: 0 38rpx;
+    margin-top: 42rpx;
+    padding: 5rpx 38rpx 38rpx 38rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
   }
 
   &__list-item {
