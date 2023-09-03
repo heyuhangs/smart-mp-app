@@ -84,6 +84,22 @@
         "navigationBarBackgroundColor": "#206CFF"
       }
 
+    },
+    {
+      "path": "pages/mine/biographicalNotes",
+      "style": {
+        "navigationBarTitleText": "个人简历",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
+    },
+    {
+      "path": "pages/mine/curriculum",
+      "style": {
+        "navigationBarTitleText": "课程课表",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
     }
   ],
 
