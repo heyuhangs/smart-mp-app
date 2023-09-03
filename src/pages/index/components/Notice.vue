@@ -1,6 +1,6 @@
 <template>
   <view class="notice">
-    <image class="notice__icon" src="@/static/home/notice_icon.png" />
+    <image class="notice__icon" src="@/static/home/notice_icon.png" @click="toNotice()" />
 
     <swiper class="notice__swiper" :circular="true" vertical="true" :autoplay="true" :interval="50000" :duration="1000">
       <swiper-item style="display: table" @touchmove.stop="stopTouchMove" v-for="(item, index) in 5" :key="index">
@@ -16,9 +16,13 @@
   </view>
 </template>
 
-<script setup></script>
+<script setup>
+  function toNotice() {
+    uni.navigateTo({url: '/pages/index/notice/notice'})
+  }
+</script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .notice {
   display: flex;
   align-items: center;

@@ -52,6 +52,38 @@
         "navigationBarBackgroundColor": "#206CFF"
       }
 
+    },
+    {
+      "path": "pages/index/notice/notice",
+      "style": {
+        "navigationBarTitleText": "基地要闻",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
+    },
+    {
+      "path": "pages/index/notice/info",
+      "style": {
+        "navigationBarTitleText": "要闻详情",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
+    },
+    {
+      "path": "pages/index/briefIntroduction/briefIntroduction",
+      "style": {
+        "navigationBarTitleText": "基地简介",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
+    },
+    {
+      "path": "pages/index/briefIntroduction/info",
+      "style": {
+        "navigationBarTitleText": "简介详情",
+        "navigationBarBackgroundColor": "#206CFF"
+      }
+
     }
   ],
 

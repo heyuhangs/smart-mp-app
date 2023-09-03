@@ -5,7 +5,7 @@
         <view class="title__mark"></view>
         <text class="title__text">基地简介</text>
       </view>
-      <view class="title__right">
+      <view class="title__right" @click="toBriefIntroduction()">
         <text class="title__arrow-text">查看更多</text>
         <image class="title__arrow-icon" src="@/static/basic/back.png" />
       </view>
@@ -24,9 +24,13 @@
   </view>
 </template>
 
-<script setup></script>
+<script setup>
+  function toBriefIntroduction() {
+      uni.navigateTo({url: '/pages/index/briefIntroduction/briefIntroduction'})
+   }
+</script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .brief-introduction {
   position: relative;
   z-index: 2;
