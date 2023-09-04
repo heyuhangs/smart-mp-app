@@ -101,7 +101,16 @@
       }
 
     }
-  ],
+      ,{
+            "path" : "pages/mine/device",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设备存储",
+                "navigationBarBackgroundColor": "#206CFF"
+            }
+            
+        }
+    ],
 
   "tabBar": {
     "color": "#999999",

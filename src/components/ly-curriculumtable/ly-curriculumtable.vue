@@ -6,8 +6,7 @@
 				<text class="text-lg">上周</text>
 			</view>
 			<view class="content" @click="weekOpen">
-				<view>{{tMonth}}月{{ dateLi[0] }}日至{{tMonth}}月{{ dateLi[6] }}日
-				</view>
+				<view>{{ dateDetailsLi[0] }}至{{ dateDetailsLi[6] }}</view>
 				<uni-icons type="bottom" size="15"></uni-icons>
 			</view>
 			<view class="action" @click="nextWeek">
@@ -38,12 +37,12 @@
 					<view class="courseList" v-for="(course, courseIndex) in week" :key="courseIndex">
 						<view v-if="course.length==1">
 							<view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course"
-								:style="{ height: (course.length * 73 ) + 'px', background: course.backgroundColor,	color: course.color}"
+								:style="{ height: (course.length * 75 ) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
 								v-if="course.length > 0">{{ course.name }}</view>
 						</view>
 						<view v-else="course.length!=1">
 							<view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course"
-								:style="{ height: (course.length * 73+ course.length) + 'px', background: course.backgroundColor, color: course.color}"
+								:style="{ height: (course.length * 75+ course.length) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
 								v-if="course.length > 0">{{ course.name }}</view>
 						</view>
 					</view>
@@ -90,51 +89,51 @@
 				default: () => {
 					return [{
 							index: '1',
-							name: '08:00\n08:40'
+							name: '08:00-08:40'
 						},
 						{
 							index: '2',
-							name: '08:50\n09:30'
+							name: '08:50-09:30'
 						},
 						{
 							index: '3',
-							name: '09:40\n10:20'
+							name: '09:40-10:20'
 						},
 						{
 							index: '4',
-							name: '10:30\n11:10'
+							name: '10:30-11:10'
 						},
 						{
 							index: '5',
-							name: '11:20\n12:00'
+							name: '11:20-12:00'
 						},
 						{
 							index: '6',
-							name: '14:00\n14:40'
+							name: '14:00-14:40'
 						},
 						{
 							index: '7',
-							name: '15:50\n16:30'
+							name: '15:50-16:30'
 						},
 						{
 							index: '8',
-							name: '16:40\n17:20'
+							name: '16:40-17:20'
 						},
 						{
 							index: '9',
-							name: '17:30\n18:10'
+							name: '17:30-18:10'
 						},
 						{
 							index: '10',
-							name: '19:00\n19:40'
+							name: '19:00-19:40'
 						},
 						{
 							index: '11',
-							name: '20:50\n21:30'
+							name: '20:50-21:30'
 						},
 						{
 							index: '12',
-							name: '21:40\n22:20'
+							name: '21:40-22:20'
 						}
 					]
 				}
@@ -161,9 +160,7 @@
 		data() {
 			return {
 				//borderPalette: [...this.palette, '#fe9d9f', '#91dcfc', '#f4f1d4', '#b0efd3', '#def7f8', '#93f5e0', '#e3e8fb', '#edf3b0', '#bcfbfc', '#efe2f9', '#ffe4a0', '#c9edf1', '#b495e1', '#ffe4a0', '#edffec'],
-				allPalette: [...this.palette, '#f05261', '#48a8e4', '#ffd061', '#52db9a', '#70d3e6', '#52db9a', '#3f51b5',
-					'#f3d147', '#4adbc3', '#673ab7', '#ff9800', '#76bfcd', '#673ab7', '#ff9800', '#8bc34a'
-				],
+				allPalette: [...this.palette],
 				nowWeek: 0, // 当前周数下标 
 				weekCurrent: 1, //当前周数
 				weeky: 1,
@@ -310,27 +307,6 @@
 				//子组件事件
 				this.$emit('nextWeekClick', this.nowWeek + 1)
 			},
-			//点击第几周事件 （显示弹出层）
-			weekOpen() {
-				this.$emit('weekOpenClick')
-				if (!this.weekTableState) {
-					return
-				}
-				// 通过组件定义的ref调用uni-popup方法 ,如果传入参数 ，type 属性将失效 ，仅支持 ['top','left','bottom','right','center']
-				this.$refs.popup.open()
-
-			},
-			//底部弹出层  选择周数事件
-			selectWeek(e) {
-				// console.log(JSON.stringify(e.detail.value))
-				this.nowWeek = e.detail.value - 1
-				var index = this.nowWeek * 7
-				let data2 = this.getfun_date(index)
-				//console.log("这是上第",this.nowWeek,"周",index,"天以后",)
-				this.GetTime(data2)
-				this.$refs.popup.close()
-				this.$emit('weekSelectClick', e.detail.value)
-			},
 			//计算一周日期
 			GetTime(dateValue) {
 				let date;
@@ -363,7 +339,7 @@
 						data.push(this.getWeek(-i, dateValue))
 					}
 					this.frontDate = i;
-					//console.log("得到当前日期以及之前的",this.getWeek(-i,dateValue))
+					// console.log("得到当前日期以及之前的",this.getWeek(-i,dateValue))
 				}
 				//当前日期之后的
 				if (weekIndex != 0) {
@@ -376,7 +352,7 @@
 							data.push(this.getWeek(i, dateValue))
 						}
 						this.afterDate = i;
-						//console.log("当前日期之后的",this.getWeek(-i,dateValue))
+						// console.log("当前日期之后的",this.getWeek(-i,dateValue))
 					}
 				}
 
@@ -401,7 +377,7 @@
 				tMonth = tMonth + 1;
 				tDate = tDate;
 				if (state == 1) {
-					return tMonth + "/" + tDate;
+					return tMonth + "月" + tDate + '日';
 				} else if (state == 2) {
 					return tYear + "/" + tMonth + "/" + tDate;
 				} else {
@@ -560,6 +536,7 @@
 		.main {
 			position: relative;
 			margin-top: 2px;
+			padding-bottom: 160rpx;
 
 			.row {
 				height: 80px;
@@ -600,6 +577,7 @@
 				width: calc(100% - 160rpx);
 				height: 100%;
 				display: flex;
+				margin: 0 0 80rpx 0;
 
 				.week {
 					.courseList {
@@ -608,12 +586,11 @@
 						color: white;
 						overflow: hidden;
 						font-size: 24rpx;
-						margin: 0 3rpx;
 
 						.course {
 							text-align: center;
 							border-style: solid;
-							border-width: 1px;
+							border-width: 0;
 							opacity: 0.8;
 							line-height: 45rpx;
 							padding: 6rpx 3rpx;
