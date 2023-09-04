@@ -282,8 +282,7 @@
 			//上一周
 			lastWeek() {
 				if (this.nowWeek == 0) {
-					//console.log("已经是第一周了")
-					uni.$u.toast('已经是第一周了')
+					console.log("已经是第一周了")
 					return
 				}
 				this.nowWeek -= 1

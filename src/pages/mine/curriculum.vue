@@ -6,16 +6,6 @@
 			@courseClick="courseClick" @weekSelectClick="weekSelectClick" @weekOpenClick="weekOpenClick">
 
 		</ly-curriculumtable>
-		<!-- 课程详情 -->
-		<!-- 		<u-modal class="modal" :show="showMyModal" title="课程详情" :closeOnClickOverlay="true" :showConfirmButton="false"
-			@close="closeModal">
-			<view class="slot-content">
-				<u-cell-group>
-					<u-cell v-for="(item,index) in modalItem" :key="index" :title="item" :icon="modalIcon[index]"
-						:iconStyle="{color: colorList()[index+1]}" size="large"></u-cell>
-				</u-cell-group>
-			</view>
-		</u-modal> -->
 	</view>
 </template>
 <script>
@@ -77,47 +67,6 @@
 				]
 			}
 
-		},
-		methods: {
-			courseClick(re) {
-				console.log(re)
-
-				//console.log(JSON.stringify(re))
-				this.modalItem[0] = "课程: " + re.name;
-				this.modalItem[1] = "教室: 213"
-				this.modalItem[2] = "教师: 吴老师"
-				this.modalItem[3] = "时间: 9:00-9:40";
-				this.showMyModal = true;
-				//console.log(",",JSON.stringify(this.modalItem))
-
-			},
-			nextWeekClick(e) {
-				console.log("下一周", e)
-			},
-			lastWeekClick(e) {
-				console.log("上一周", e)
-			},
-			weekOpenClick() {
-				console.log("点击了第几周")
-			},
-			weekSelectClick(e) {
-				console.log("您选择了", e)
-			},
-			//关闭弹窗
-			closeModal() {
-				this.showMyModal = this.showMyModal == true ? false : true;
-			},
-			//返回颜色
-			colorList() {
-				return [
-					"#0D73F9", //0
-					"#FFA51E", //1
-					"#4CCE92",
-					"#8485FB", //3
-					"#F2565F" //4
-				]
-			},
-
-		},
+		}
 	}
 </script>
