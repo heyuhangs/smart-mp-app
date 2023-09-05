@@ -25,19 +25,36 @@
 </template>
 
 <script setup>
-import { onMounted, computed, ref } from "vue";
-const studentNumber = ref('')
-const password = ref('')
+import { ref } from 'vue'
 
-function login() {d
-  if (!that.phone) {
-    uni.showToast({ title: '请输入手机号', icon: 'none' })
+import { studentNumberLogin } from '@/service/login'
+
+const studentNumber = ref('15804004038')
+const password = ref('1Q2w3e4r5t')
+
+async function login() {
+  if (!studentNumber.value) {
+    uni.showToast({ title: '请输入学号', icon: 'none' })
     return
   }
-  if (!/^[1][3,4,5,7,8,9][0-9]{9}$/.test(that.phone)) {
-    uni.showToast({ title: '请输入正确手机号', icon: 'none' })
+
+  if (!password.value) {
+    uni.showToast({ title: '请输入密码', icon: 'none' })
     return
   }
+
+  const res = await studentNumberLogin({
+    userName: studentNumber.value,
+    password: password.value
+  })
+
+console.log(res)
+  debugger
+
+  if(code === 200){
+    return
+  }
+
 
   uni.showToast({ title: '登录成功！', icon: 'none' })
 }
@@ -62,7 +79,7 @@ function login() {d
   font-size: 30rpx;
   font-weight: 600;
   margin-top: 120rpx;
-  background: #4574E0;
+  background: #4574e0;
   color: #fff;
   height: 98rpx;
   line-height: 98rpx;
@@ -77,7 +94,7 @@ function login() {d
   height: 98rpx;
   line-height: 98rpx;
   margin-bottom: 50rpx;
-  background: #F5F5FA;
+  background: #f5f5fa;
   color: #333;
   font-size: 28rpx;
   border-radius: 50rpx;
