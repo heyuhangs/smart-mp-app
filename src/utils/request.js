@@ -1,20 +1,17 @@
-function getHeader(params) {
-  // const host = params.url.match(/https?:\/\/([^/]+)\//i)[1]
+import { getToken } from '@/store/token'
 
-  const header = {}
+function getHeader(params) {
+  const token = getToken()
+
+  const header = {
+    'Authorization': 'Bearer ' + token
+  }
 
   return header
 }
 
 export async function request(params) {
   try {
-    // let { at = '', rt = '' } = getToken() || {}
-
-    // if (params?.data?.at) {
-    //   at = params?.data?.at ?? ''
-    //   rt = params?.data?.rt ?? ''
-    // }
-
     const data = {
       ...params.data
     }
@@ -39,8 +36,6 @@ export async function request(params) {
 
     return response.data
   } catch (err) {
-    console.log(err)
-    debugger
     throw err
   }
 }

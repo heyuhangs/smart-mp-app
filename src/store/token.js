@@ -1,8 +1,6 @@
 let tokenCache = null
 let userCache = null
-let loginEventCache = false
 let wxUserCache = null
-let intercepted = false
 
 export function getToken() {
   if (tokenCache) {
@@ -38,18 +36,6 @@ export function getUser() {
 export function setUser(user) {
   userCache = user
   uni.setStorageSync('user', JSON.stringify(user))
-}
-
-export function getVisitor() {
-  try {
-    return uni.getStorageSync('visitor')
-  } catch (err) {
-    return true
-  }
-}
-
-export function setVisitor(visitor) {
-  uni.setStorageSync('visitor', visitor)
 }
 
 export function getWxUserInfo() {

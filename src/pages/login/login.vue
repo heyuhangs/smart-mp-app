@@ -14,7 +14,7 @@
         <!-- <image src="@/static/yz.png"></image> -->
         <input type="password" name="password" maxlength="18" placeholder="请输入密码" v-model="password" />
       </view>
-      <button @tap="login()">登 录</button>
+      <button @tap="login()" :loading="loading">登 录</button>
     </form>
     <!-- <view class="t-f"><text>————— 第三方账号登录 —————</text></view> -->
     <!-- <view class="t-e cl">
@@ -27,36 +27,48 @@
 <script setup>
 import { ref } from 'vue'
 
+import { setToken } from '@/store/token'
 import { studentNumberLogin } from '@/service/login'
 
 const studentNumber = ref('15804004038')
 const password = ref('1Q2w3e4r5t')
+const loading = ref(false)
 
 async function login() {
-  if (!studentNumber.value) {
-    uni.showToast({ title: '请输入学号', icon: 'none' })
-    return
+  try {
+    if (!studentNumber.value) {
+      uni.showToast({ title: '请输入学号', icon: 'none' })
+      return
+    }
+
+    if (!password.value) {
+      uni.showToast({ title: '请输入密码', icon: 'none' })
+      return
+    }
+
+    loading.value = true
+
+    const { data, msg, code } = await studentNumberLogin({
+      userName: studentNumber.value,
+      password: password.value
+    })
+
+    if (code === 200 && data.token) {
+      setToken(data.token)
+      uni.showToast({ title: '登录成功！', icon: 'none' })
+
+      uni.switchTab({
+        url: `/pages/index/index`
+      })
+      return
+    }
+
+    uni.showToast({ title: msg, icon: 'none' })
+  } catch (e) {
+    uni.showToast({ title: '登录失败', icon: 'none' })
+  } finally {
+    loading.value = false
   }
-
-  if (!password.value) {
-    uni.showToast({ title: '请输入密码', icon: 'none' })
-    return
-  }
-
-  const res = await studentNumberLogin({
-    userName: studentNumber.value,
-    password: password.value
-  })
-
-console.log(res)
-  debugger
-
-  if(code === 200){
-    return
-  }
-
-
-  uni.showToast({ title: '登录成功！', icon: 'none' })
 }
 </script>
 

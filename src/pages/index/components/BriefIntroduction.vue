@@ -1,5 +1,5 @@
 <template>
-  <view class="brief-introduction">
+  <view v-if="list && list.length" class="brief-introduction">
     <view class="title">
       <view class="title__left">
         <view class="title__mark"></view>
@@ -12,22 +12,36 @@
     </view>
 
     <view class="brief-introduction__list">
-      <view v-for="item in 4" class="brief-introduction__list-item">
-        <image
-          class="brief-introduction__img"
-          src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
-          lazy-load="true" />
+      <view v-for="(item, index) in list" :key="index" class="brief-introduction__list-item">
+        <image class="brief-introduction__img" :src="`${env.imgUrl}${item.resourceUrl}`" lazy-load="true" />
 
-        <view class="brief-introduction__c">算力中心实验室</view>
+        <view class="brief-introduction__c">{{ item.content }}</view>
       </view>
     </view>
   </view>
 </template>
 
 <script setup>
-  function toBriefIntroduction() {
-      uni.navigateTo({url: '/pages/index/briefIntroduction/briefIntroduction'})
-   }
+import { ref } from 'vue'
+
+import { elegantList } from '@/service/home'
+import env from '@/host'
+
+const list = ref([])
+
+function toBriefIntroduction() {
+  uni.navigateTo({ url: '/pages/index/briefIntroduction/briefIntroduction' })
+}
+
+async function init() {
+  const { code, data } = await elegantList()
+
+  if (code === 200 && data) {
+    list.value = data
+  }
+}
+
+init()
 </script>
 
 <style lang="scss" scoped>

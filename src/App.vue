@@ -1,5 +1,8 @@
 <script setup>
-import { onLaunch, onShow, onHide} from '@dcloudio/uni-app'
+import { getToken, setUser } from '@/store/token'
+
+import { getLoginUserInfo } from '@/service/login'
+import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 
 onLaunch(() => {
   const chain = Promise.resolve()
@@ -17,8 +20,8 @@ onHide(() => {
 })
 
 const checkLoginState = async () => {
-  const isLogin = uni.getStorageSync('isLogin') || false
-  if (isLogin) {
+  const token = getToken()
+  if (token) {
     return true
   }
 
@@ -28,7 +31,16 @@ const checkLoginState = async () => {
   return false
 }
 
-const initUserStore = async () => {}
+const initUserStore = async () => {
+  const { code, data } = await getLoginUserInfo()
+  if (code === 200 && data) {
+    setUser(data)
+    return true
+  }
+
+  uni.showToast({ title: '获取用户信息失败', icon: 'none' })
+  return false
+}
 </script>
 
 <style>
