@@ -34,3 +34,20 @@ export async function elegantInfo(params = {}) {
     }
   }
 }
+
+/* *
+ *课程列表
+ */
+export async function courseList(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/edu/course/list`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}

@@ -1,12 +1,11 @@
 <template>
   <view class="course">
     <view class="course__list">
-      <view v-for="item in 10" class="course__list-item" @click="toInfo()">
-        <image class="course__list-img" src="https://tse1-mm.cn.bing.net/th/id/OIP-C.IrIqGdXe5UmEmWJEfllakwHaFj?w=269&h=201&c=7&r=0&o=5&dpr=2&pid=1.7" />
+      <view v-for="item in list" class="course__list-item" @click="toInfo()">
+        <image class="course__list-img" :src="`${env.imgUrl}${item.courseCover}`" />
         <view class="course__list-info">
-          <text class="course__list-title">工业机器人应用编程</text>
-          <text class="course__list-desc">
-            2本课程旨在引领学生了解安全用电，善用电工仪表及工具，实现电工的基本作业，作...</text>
+          <text class="course__list-title">{{item.courseName}}</text>
+          <text class="course__list-desc">{{item.courseDesc}}</text>
         </view>
       </view>
     </view>
@@ -14,6 +13,21 @@
 </template>
 
 <script setup>
+	import { ref } from 'vue'
+	
+	import { courseList } from '@/service/home'
+	import env from '@/host'
+	
+	const list = ref([])
+	async function init() {
+	  const { code, rows } = await courseList()
+	
+	  if (code === 200 && rows) {
+	    list.value = rows
+	  }
+	}
+	init()
+	
   function toInfo() {
     uni.navigateTo({
       url: '/pages/index/course/info'
