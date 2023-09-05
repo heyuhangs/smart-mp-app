@@ -25,7 +25,7 @@
   .training {
     &__content {
       background-color: #f2f4f5;
-      top: 80rpx;
+      top: 0;
       left: 0;
       right: 0;
       bottom: 0;
