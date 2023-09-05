@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+	
   function toCourse() {
      uni.navigateTo({url: '/pages/index/course/course'})
   }

@@ -1,10 +1,10 @@
 <template>
 	<view class="notice">
 		<view class="notice__list">
-      <view v-for="(item, index) in 12" :key="index" class="notice__list__item" @click="toInfo(item)">
+      <view v-for="(item, index) in list" :key="index" class="notice__list__item" @click="toInfo(item)">
         <view class="notice__list__content">
-          <text class="notice__list__title">机器人啊时间快到家啊深刻的教科书</text>
-          <text class="notice__list__time">2019-21-32</text>
+          <text class="notice__list__title">{{ item.mainTitle }}</text>
+          <text class="notice__list__time">{{ item.createTime }}</text>
         </view>
         <image class="notice__list__icon" src="@/static/basic/back.png" />
       </view>
@@ -13,8 +13,23 @@
 </template>
 
 <script setup>
+	import { ref } from 'vue'
+	
+	import { elegantList } from '@/service/home'
+	import env from '@/host'
+	
+	const list = ref([])
+	async function init() {
+	  const { code, data } = await elegantList({doorCustomType: 5})
+	
+	  if (code === 200 && data) {
+	    list.value = data
+	  }
+	}
+	init()
+	
   function toInfo(item) {
-    uni.navigateTo({url: '/pages/index/notice/info'})
+    uni.navigateTo({url: '/pages/index/notice/info?doorCustomId=' + item.doorCustomId})
   }
 </script>
 

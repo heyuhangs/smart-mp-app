@@ -12,7 +12,7 @@
     </view>
 
     <view class="brief-introduction__list">
-      <view v-for="(item, index) in list" :key="index" class="brief-introduction__list-item">
+      <view v-for="(item, index) in list" :key="index" class="brief-introduction__list-item" @click="toInfo(item)">
         <image class="brief-introduction__img" :src="`${env.imgUrl}${item.resourceUrl}`" lazy-load="true" />
 
         <view class="brief-introduction__c">{{ item.content }}</view>
@@ -34,7 +34,7 @@ function toBriefIntroduction() {
 }
 
 async function init() {
-  const { code, data } = await elegantList()
+  const { code, data } = await elegantList({doorCustomType: 2})
 
   if (code === 200 && data) {
     list.value = data
@@ -42,6 +42,12 @@ async function init() {
 }
 
 init()
+
+function toInfo(item) {
+	uni.navigateTo({
+		url: '/pages/index/briefIntroduction/info?doorCustomId=' + item.doorCustomId
+	})
+}
 </script>
 
 <style lang="scss" scoped>

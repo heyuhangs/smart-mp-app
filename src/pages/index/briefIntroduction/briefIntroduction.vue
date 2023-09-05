@@ -1,11 +1,11 @@
 <template>
 	<view class="briefIntroduction">
 		<view class="briefIntroduction__list">
-			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo()">
+			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo(item)">
 				<view class="briefIntroduction__list-info">
 					<text class="briefIntroduction__list-title">{{ item.content }}</text>
 					<text class="briefIntroduction__list-desc">
-						没找到渲染字段....</text>
+						待确认渲染字段....</text>
 				</view>
 				<image class="briefIntroduction__list-img" :src="`${env.imgUrl}${item.resourceUrl}`" />
 			</view>
@@ -14,20 +14,13 @@
 </template>
 
 <script setup>
-	import {
-		ref
-	} from 'vue'
-	import {
-		elegantList
-	} from '@/service/home'
+	import {ref} from 'vue'
+	import {elegantList} from '@/service/home'
 	import env from '@/host'
 
 	const list = ref([])
 	async function init() {
-		const {
-			code,
-			data
-		} = await elegantList()
+		const {code, data} = await elegantList({doorCustomType: 2})
 
 		if (code === 200 && data) {
 			list.value = data
@@ -36,9 +29,9 @@
 
 	init()
 
-	function toInfo() {
+	function toInfo(item) {
 		uni.navigateTo({
-			url: '/pages/index/briefIntroduction/info'
+			url: '/pages/index/briefIntroduction/info?doorCustomId=' + item.doorCustomId
 		})
 	}
 </script>
