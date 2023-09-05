@@ -26,7 +26,7 @@ const checkLoginState = async () => {
   }
 
   uni.reLaunch({
-    url: `pages/login/login`
+    url: `/pages/login/login`
   })
   return false
 }
@@ -38,7 +38,6 @@ const initUserStore = async () => {
     return true
   }
 
-  uni.showToast({ title: '获取用户信息失败', icon: 'none' })
   return false
 }
 </script>
