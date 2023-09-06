@@ -3,7 +3,7 @@
     <view class="notice-info__main">
       <view class="notice-info__title">{{ obj.mainTitle }}</view>
       <view class="notice-info__msg">
-        <view>{{ obj.createTime }}</view>|<view>来源：待确认渲染字段....</view>
+        <view>{{ obj.createTime }}</view>
       </view>
       <view class="notice-info__content">
        {{ obj.content }}

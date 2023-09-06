@@ -7,7 +7,7 @@
         </view>
         <view>实训室编号</view>
       </view>
-      <view>L03</view>
+      <view>{{ obj.code }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -17,7 +17,7 @@
         </view>
         <view>实训室管理员</view>
       </view>
-      <view>刘思思</view>
+      <view>{{ obj.adminName }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -27,7 +27,7 @@
         </view>
         <view>实训室状态</view>
       </view>
-      <view>空闲</view>
+      <view>{{ obj.state }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -37,7 +37,7 @@
         </view>
         <view>实训室管理员电话</view>
       </view>
-      <view>15912345667</view>
+      <view>{{ obj.adminPhone }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -47,7 +47,7 @@
         </view>
         <view>实训室容量</view>
       </view>
-      <view>0</view>
+      <view>{{ obj.seatCount }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -57,12 +57,32 @@
         </view>
         <view>实训室地址</view>
       </view>
-      <view>清华楼</view>
+      <view>{{ obj.addr }}</view>
     </view>
 	</view>
 </template>
 
 <script setup>
+	import {ref, defineProps, toRefs, onMounted} from 'vue'
+	import {trainingroomInfo} from '@/service/training'
+	const props = defineProps({
+		obj: Object,
+		required: true,
+		default: {}
+	});
+	const obj = ref({})
+	onMounted(() => {
+	  obj.value = props.obj
+	  init(obj.value)
+	});
+	async function init(item) {
+		const {code, data} = await trainingroomInfo({id: item.trainId})
+			
+		if (code === 200 && data) {
+			obj.value = data
+			isShow.value = true
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

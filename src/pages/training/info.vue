@@ -4,7 +4,7 @@
       lazy-load="true" />
     <view class="training-info__title">产研融合实训室</view>
 
-    <view class="training-info__content">
+    <view v-if="isShow" class="training-info__content">
       <!--tab-->
       <scroll-view class="scroll-view" scroll-x="true" @scroll="scroll">
         <view class="scroll-view-item" v-for="(tab,index) in tabBars" :key="index" :class="navIndex==index ? 'activite' : ''"
@@ -15,10 +15,10 @@
       <!-- 内容 -->
       <swiper :current="navIndex" @change="tabChange" class="tab_content" :style="{ height: swiperHeight + 'px' }">
         <swiper-item class="swiper_item">
-          <Introduce class="etmHights"></Introduce>
+          <Introduce class="etmHights" :obj="obj"></Introduce>
         </swiper-item>
         <swiper-item class="swiper_item">
-          <Information class="etmHights"></Information>
+          <Information class="etmHights" :obj="obj"></Information>
         </swiper-item>
       </swiper>
     </view>
@@ -31,14 +31,35 @@
     getCurrentInstance,
     onMounted
   } from 'vue'
+	import {elegantInfo} from '@/service/home'
+	import env from '@/host'
+	import {onLoad} from "@dcloudio/uni-app";
   import Introduce from './components/Introduce.vue'
   import Information from './components/Information.vue'
   var tabBars = ref([
     '实训室介绍',
     '实训室信息'
   ])
+  const obj = ref({})
+  let doorCustomId = null;
+  onLoad((option) => {
+  	doorCustomId=option.doorCustomId
+  });
+  onMounted(()=>{
+  	init()
+  })
+  async function init() {
+  	const {code, data} = await elegantInfo({doorCustomId: doorCustomId})
+  		
+  	if (code === 200 && data) {
+  		obj.value = data
+		isShow.value = true
+  	}
+  }
+  
   var navIndex = ref(0)
   var scrollTop = ref(0)
+  var isShow = ref(false)
   const instance = getCurrentInstance() // 动态设置高度
   const swiperHeight = ref(0) // 窗口高度
   const windowHeight = ref() // 获取元素高度

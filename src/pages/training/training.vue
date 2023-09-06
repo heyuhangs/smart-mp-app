@@ -2,11 +2,11 @@
   <view class="training">
     <view class="training__content">
       <view class="training__list">
-        <view v-for="(item, index) in 4" class="training__list-item" @click="toInfo(item)">
-          <image class="training__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        <view v-for="(item, index) in list" class="training__list-item" @click="toInfo(item)">
+          <image class="training__img"  :src="`${env.imgUrl}${item.resourceUrl}`"
             lazy-load="true" />
           <view class="training__c" :class="index%2===0 ? 'training__c__left' : 'training__c__right'">
-            <span>算力中心实验室</span>
+            <span>{{ item.mainTitle }}</span>
           </view>
         </view>
       </view>
@@ -15,9 +15,29 @@
 </template>
 
 <script setup>
+	import { ref } from 'vue'
+	
+	import { elegantList } from '@/service/home'
+	import env from '@/host'
+	
+	const list = ref([])
+	
+	function toBriefIntroduction() {
+	  uni.navigateTo({ url: '/pages/index/briefIntroduction/briefIntroduction' })
+	}
+	
+	async function init() {
+	  const { code, data } = await elegantList({doorCustomType: 2})
+	
+	  if (code === 200 && data) {
+	    list.value = data
+	  }
+	}
+	
+	init()
+	
   function toInfo(item) {
-    console.log(item)
-    uni.navigateTo({url: '/pages/training/info'})
+    uni.navigateTo({url: '/pages/training/info?doorCustomId=' + item.doorCustomId})
   }
 </script>
 

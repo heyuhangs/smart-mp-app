@@ -94,7 +94,7 @@
 
    	if (code === 200 && data) {
    		obj.value = data
-		isShow.value = true
+	    isShow.value = true
    	}
    }
 
