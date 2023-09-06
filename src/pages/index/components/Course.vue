@@ -12,7 +12,7 @@
     </view>
 
     <view class="course__list">
-      <view v-for="item in list" class="course__list-item">
+      <view v-for="item in list" class="course__list-item" @click="toInfo(item)">
         <image
           class="course__list-img"
           :src="`${env.imgUrl}${item.courseCover}`" />
@@ -36,13 +36,19 @@
 	  const { code, rows } = await courseList()
 	
 	  if (code === 200 && rows) {
-	    list.value = rows
+	    list.value = rows.slice(0, 2)
 	  }
 	}
 	init()
 	
   function toCourse() {
      uni.navigateTo({url: '/pages/index/course/course'})
+  }
+  
+  function toInfo(item) {
+    uni.navigateTo({
+      url: '/pages/index/course/info?id=' + item.id
+    })
   }
 </script>
 

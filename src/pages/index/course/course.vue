@@ -1,7 +1,7 @@
 <template>
   <view class="course">
     <view class="course__list">
-      <view v-for="item in list" class="course__list-item" @click="toInfo()">
+      <view v-for="item in list" class="course__list-item" @click="toInfo(item)">
         <image class="course__list-img" :src="`${env.imgUrl}${item.courseCover}`" />
         <view class="course__list-info">
           <text class="course__list-title">{{item.courseName}}</text>
@@ -28,9 +28,9 @@
 	}
 	init()
 	
-  function toInfo() {
+  function toInfo(item) {
     uni.navigateTo({
-      url: '/pages/index/course/info'
+      url: '/pages/index/course/info?id=' + item.id
     })
   }
 </script>

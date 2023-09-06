@@ -1,10 +1,10 @@
 <template>
   <view class="briefIntroduction-info">
     <view class="briefIntroduction-info__main">
-      <view class="briefIntroduction-info__title">{{ obj.content}}</view>
+      <view class="briefIntroduction-info__title">{{ obj.mainTitle }}</view>
       <image class="briefIntroduction-info__img" :src="`${env.imgUrl}${obj.resourceUrl}`" />
       <view class="briefIntroduction-info__content">
-        待确认渲染字段....
+        {{ obj.content }}
       </view>
     </view>
   </view>

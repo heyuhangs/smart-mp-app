@@ -13,6 +13,16 @@
 </template>
 
 <script setup>
+	import {ref, defineProps, toRefs, onMounted} from 'vue'
+	const props = defineProps({
+		obj: Object,
+		required: true,
+		default: {}
+	});
+	const obj = ref({})
+	onMounted(() => {
+	  obj.value = props.obj
+	});
 </script>
 
 <style lang="scss" scoped>

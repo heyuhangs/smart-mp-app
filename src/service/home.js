@@ -19,7 +19,7 @@ export async function elegantList(params = {}) {
 }
 
 /* *
- *获取详情
+ *获取基地详情
  */
 export async function elegantInfo(params = {}) {
   try {
@@ -42,6 +42,23 @@ export async function courseList(params = {}) {
   try {
     return await request({
       url: `${env.api}/edu/course/list`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
+ *获取课程详情
+ */
+export async function courseInfo(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/edu/course/` + params.id,
       method: 'get'
     })
   } catch (err) {

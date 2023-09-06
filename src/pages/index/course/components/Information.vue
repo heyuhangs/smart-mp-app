@@ -1,5 +1,5 @@
 <template>
-	<view class="training-info-information">
+<view class="training-info-information">
     <view class="training-info-information__line">
       <view class="training-info-information__title">
         <view class="training-info-information__icon">
@@ -7,7 +7,7 @@
         </view>
         <view>学院</view>
       </view>
-      <view>智能制造技术学院</view>
+      <view>{{ obj.schoolName }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -17,7 +17,7 @@
         </view>
         <view>专业</view>
       </view>
-      <view>工业机器人技术</view>
+      <view>{{ obj.majorName }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -27,7 +27,7 @@
         </view>
         <view>课时</view>
       </view>
-      <view>2023.03.13-2023.05.01(13课时)</view>
+      <view>{{ obj.startDate }}-{{ obj.endDate}}({{ obj.hours}}课时)</view>
     </view>
 
     <view class="training-info-information__line">
@@ -37,14 +37,22 @@
         </view>
         <view>负责人</view>
       </view>
-      <view>范振铎</view>
+      <view>{{ obj.courseTeacherName }}</view>
     </view>
-
-
-	</view>
+</view>
 </template>
 
 <script setup>
+	import {ref, defineProps, toRefs, onMounted} from 'vue'
+	const props = defineProps({
+		obj: Object,
+		required: true,
+		default: {}
+	});
+	const obj = ref({})
+	onMounted(() => {
+	  obj.value = props.obj
+	});
 </script>
 
 <style lang="scss" scoped>

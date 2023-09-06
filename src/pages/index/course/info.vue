@@ -1,10 +1,10 @@
 <template>
   <view class="training-info">
-    <image class="training-info__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+    <image class="training-info__img" :src="`${env.imgUrl}${obj.courseCover}`"
       lazy-load="true" />
-    <view class="training-info__title">数控机床</view>
+    <view class="training-info__title">{{ obj.courseName }}</view>
 
-    <view class="training-info__content">
+    <view v-if="isShow" class="training-info__content">
       <!--tab-->
       <scroll-view class="scroll-view" scroll-x="true" @scroll="scroll">
         <view class="scroll-view-item" v-for="(tab,index) in tabBars" :key="index" :class="navIndex==index ? 'activite' : ''"
@@ -15,13 +15,13 @@
       <!-- 内容 -->
       <swiper :current="navIndex" @change="tabChange" class="tab_content" :style="{ height: swiperHeight + 'px' }">
         <swiper-item class="swiper_item">
-          <Introduce class="etmHights"></Introduce>
+          <Introduce class="etmHights" :obj="obj"></Introduce>
         </swiper-item>
         <swiper-item class="swiper_item">
-          <Information class="etmHights"></Information>
+          <Information class="etmHights" :obj="obj"></Information>
         </swiper-item>
         <swiper-item class="swiper_item">
-          <Teachers class="etmHights"></Teachers>
+          <Teachers class="etmHights" :obj="obj"></Teachers>
         </swiper-item>
       </swiper>
     </view>
@@ -32,12 +32,22 @@
   import {
     ref,
     getCurrentInstance,
-    onMounted
+    onMounted,
+	reactive 
   } from 'vue'
+  import {courseInfo} from '@/service/home'
+  import env from '@/host'
+  import {onLoad} from "@dcloudio/uni-app";
   import Introduce from './components/Introduce.vue'
   import Information from './components/Information.vue'
   import Teachers from './components/Teachers.vue'
 
+  const obj = ref({})
+  let id = null;
+	onLoad((option) => {
+		id=option.id
+	});
+	
   var tabBars = ref([
     '课程简介',
     '课程信息',
@@ -45,10 +55,12 @@
   ])
   var navIndex = ref(0)
   var scrollTop = ref(0)
+  var isShow = ref(false)
   const instance = getCurrentInstance() // 动态设置高度
   const swiperHeight = ref(0) // 窗口高度
   const windowHeight = ref() // 获取元素高度
-
+  
+  
   function getItemHeight() {
     let query = uni.createSelectorQuery().in(instance);
     query.select(".etmHights").boundingClientRect(data => {
@@ -62,6 +74,7 @@
     }).exec();
   }
   onMounted(async () => {
+	init()
     uni.getSystemInfo({
       success(res) {
         windowHeight.value = res.windowHeight
@@ -76,6 +89,14 @@
     getItemHeight()
   }
 
+   async function init() {
+   	const {code, data} = await courseInfo({id: id})
+
+   	if (code === 200 && data) {
+   		obj.value = data
+		isShow.value = true
+   	}
+   }
 
   function checkIndex(index) {
     navIndex.value = index
@@ -84,6 +105,8 @@
   function scroll(e) {
     scrollTop.value = e.detail.scrollTop
   }
+  
+
 </script>
 
 <style lang="scss" scoped>
