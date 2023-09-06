@@ -7,7 +7,7 @@ import env from '@/host'
 export async function scheduleList(params = {}) {
   try {
     return await request({
-      url: `${env.api}/course/schedule/list`,
+      url: `${env.api}/course/schedule/list?scheduleId=` + params.scheduleId,
       method: 'get'
     })
   } catch (err) {
