@@ -13,7 +13,7 @@
         </view>
       </scroll-view>
       <!-- 内容 -->
-      <swiper :current="navIndex" @change="tabChange" class="tab_content" :style="{ height: swiperHeight + 'px' }">
+      <swiper :current="navIndex" @change="tabChange" class="tab_content">
         <swiper-item class="swiper_item">
           <Introduce class="etmHights" :obj="obj"></Introduce>
         </swiper-item>
@@ -28,7 +28,6 @@
 <script setup>
   import {
     ref,
-    getCurrentInstance,
     onMounted
   } from 'vue'
 	import {elegantInfo} from '@/service/home'
@@ -60,37 +59,10 @@
   var navIndex = ref(0)
   var scrollTop = ref(0)
   var isShow = ref(false)
-  const instance = getCurrentInstance() // 动态设置高度
-  const swiperHeight = ref(0) // 窗口高度
-  const windowHeight = ref() // 获取元素高度
 
-  function getItemHeight() {
-    let query = uni.createSelectorQuery().in(instance);
-    query.select(".etmHights").boundingClientRect(data => {
-      // 如果 窗口高度 - （顶部距离 + 底部距离 ）小于 100 则 元素本身高度 + 100
-      if (windowHeight.value - (data.top + data.bottom) < 100) {
-        swiperHeight.value = data.height + 100
-      } // 如果 窗口高度 - （顶部距离 + 底部距离 ）大于 100 则 元素本身高度 加 剩余高度
-      if (windowHeight.value - (data.top + data.bottom) > 100) {
-        swiperHeight.value = data.height + (windowHeight.value - (data.top + data.bottom))
-      }
-    }).exec();
-  }
-  onMounted(async () => {
-    uni.getSystemInfo({
-      success(res) {
-        windowHeight.value = res.windowHeight
-      }
-    })
-    setTimeout(() => {
-      getItemHeight()
-    }, 800);
-  })
   const tabChange = (e) => {
     navIndex.value = e.detail.current
-    getItemHeight()
   }
-
 
   function checkIndex(index) {
     navIndex.value = index
@@ -151,6 +123,7 @@
 
       .tab_content {
         color: #13161A;
+		min-height: calc(100vh - 600rpx);
       }
     }
   }

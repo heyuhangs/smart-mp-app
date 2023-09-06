@@ -68,3 +68,20 @@ export async function courseInfo(params = {}) {
     }
   }
 }
+
+/* *
+ * 获取师资介绍列表
+ */
+export async function introList(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/edu/intro/list?courseId=` + params.courseId,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}

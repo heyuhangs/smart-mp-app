@@ -1,9 +1,9 @@
 <template>
   <view class="notice">
-    <image class="notice__icon" src="@/static/home/notice_icon.png" @click="toNotice()" />
+    <image class="notice__icon" src="@/static/home/notice_icon.png" />
 
     <swiper class="notice__swiper" :circular="true" vertical="true" :autoplay="true" :interval="50000" :duration="1000">
-      <swiper-item style="display: table" @touchmove.stop="stopTouchMove" v-for="(item, index) in list" :key="index" @click="toInfo(item)">
+      <swiper-item style="display: table" @touchmove.stop="stopTouchMove" v-for="(item, index) in list" :key="index" @click="toNotice()">
         <view class="notice__item">
           <view class="notice__item-left">
             <text class="notice__item-title">{{ item.mainTitle }}</text>

@@ -1,12 +1,10 @@
 <template>
   <view class="teacher-list">
-    <view v-for="item in 4" class="teacher-list__item">
-      <image class="teacher-list__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7" />
+    <view v-for="item in list" class="teacher-list__item">
+      <image class="teacher-list__img" :src="`${env.imgUrl}${item.avatar}`" />
       <view class="teacher-list__info">
-        <text class="teacher-list__title">范敬巍	（智能制造技术学院）</text>
-        <text class="teacher-list__desc">
-          江汉大学人工智能学院副教授，主要研究方向为数字化
-          技术....</text>
+        <text class="teacher-list__title">{{item.name}}	（{{item.schoolName}}）</text>
+        <text class="teacher-list__desc">{{item.intro}}</text>
       </view>
     </view>
   </view>
@@ -14,15 +12,26 @@
 
 <script setup>
 	import {ref, defineProps, toRefs, onMounted} from 'vue'
+	import {introList} from '@/service/home'
+	import env from '@/host'
 	const props = defineProps({
 		obj: Object,
 		required: true,
 		default: {}
 	});
 	const obj = ref({})
+	const list = ref([])
 	onMounted(() => {
 	  obj.value = props.obj
+	  init(obj.value.id)
 	});
+	async function init(courseId) {
+	  const { code, rows } = await introList({courseId: courseId})
+	
+	  if (code === 200 && rows) {
+		list.value = rows
+	  }
+	}
 </script>
 
 <style lang="scss" scoped>
