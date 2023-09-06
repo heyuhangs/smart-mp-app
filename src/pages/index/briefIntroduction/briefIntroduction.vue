@@ -3,9 +3,8 @@
 		<view class="briefIntroduction__list">
 			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo(item)">
 				<view class="briefIntroduction__list-info">
-					<text class="briefIntroduction__list-title">{{ item.content }}</text>
-					<text class="briefIntroduction__list-desc">
-						待确认渲染字段....</text>
+					<text class="briefIntroduction__list-title">{{ item.mainTitle }}</text>
+					<text class="briefIntroduction__list-desc">{{ item.content }}</text>
 				</view>
 				<image class="briefIntroduction__list-img" :src="`${env.imgUrl}${item.resourceUrl}`" />
 			</view>
