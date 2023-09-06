@@ -1,8 +1,8 @@
 <template>
   <view class="training-info">
-    <image class="training-info__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+    <image class="training-info__img" :src="`${env.imgUrl}${obj.resourceUrl}`"
       lazy-load="true" />
-    <view class="training-info__title">产研融合实训室</view>
+    <view class="training-info__title">{{ obj.trainName }}</view>
 
     <view v-if="isShow" class="training-info__content">
       <!--tab-->
