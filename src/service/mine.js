@@ -17,3 +17,20 @@ export async function scheduleList(params = {}) {
     }
   }
 }
+
+/* *
+ * 获取简历
+ */
+export async function getResumeInfo(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/studentTerminal/resume/getResumeInfo/1`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}

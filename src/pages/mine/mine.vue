@@ -6,7 +6,7 @@
         <image class="mine__top__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
           lazy-load="true" />
         <view>
-          <view class="mine__top__name">景天(工业机器人技术)</view>
+          <view class="mine__top__name">{{obj.nickName}}(工业机器人技术)</view>
           <view class="mine__top__address">智能制造技术学院 </view>
         </view>
       </view>
@@ -21,7 +21,7 @@
         <image class="mine__menu__back" src="@/static/basic/back.png" />
       </view>
 
-      <view class="mine__menu__item" @click="toBiographicalNotes()">
+      <view class="mine__menu__item" @click="toBiographicalNotes(obj.id)">
         <view class="mine__menu__left">
           <image class="mine__menu__icon" src="@/static/mine/biographicalNotes.png" />
           <view class="mine__menu__name">个人简历</view>
@@ -34,8 +34,14 @@
 </template>
 
 <script setup>
-  function toBiographicalNotes() {
-    uni.navigateTo({url: '/pages/mine/biographicalNotes'})
+	import { ref } from 'vue'
+	import { getUser } from '@/store/token'
+	import env from '@/host'
+	
+	const obj = ref(getUser())
+
+  function toBiographicalNotes(id) {
+    uni.navigateTo({url: '/pages/mine/biographicalNotes?id=' + id})
   }
   function toCurriculum() {
     uni.navigateTo({url: '/pages/mine/curriculum'})
