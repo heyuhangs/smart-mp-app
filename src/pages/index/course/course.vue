@@ -52,7 +52,7 @@
       padding: 5rpx 38rpx 38rpx 38rpx;
       background-color: #ffffff;
       border-radius: 20rpx;
-      min-height: calc(100vh - 122rpx);
+      min-height: calc(100vh - 42rpx);
     }
 
     &__list-item {
@@ -88,12 +88,13 @@
       font-weight: 400;
       color: #999999;
       line-height: 40rpx;
-      margin-top: 16rpx;
+      margin-top: 20rpx;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+	  text-indent: 50rpx;
     }
   }
 </style>

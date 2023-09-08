@@ -51,7 +51,7 @@
       padding: 0 25rpx;
       margin-top: 42rpx;
       border-radius: 15rpx;
-      min-height: calc(100vh - 122rpx);
+      min-height: calc(100vh - 42rpx);
     }
 
     &__title {

@@ -52,7 +52,7 @@
 			padding: 5rpx 38rpx 0 38rpx;
 			background-color: #ffffff;
 			border-radius: 20rpx;
-			min-height: calc(100vh - 122rpx);
+			min-height: calc(100vh - 42rpx);
 		}
 
 		&__list-item {

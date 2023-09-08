@@ -49,7 +49,7 @@
   padding: 0 25rpx;
   margin-top: 42rpx;
   border-radius: 15rpx;
-  min-height: calc(100vh - 122rpx);
+  min-height: calc(100vh - 42rpx);
 
     &__item {
       display: flex;
@@ -76,7 +76,7 @@
     }
 
     &__time {
-      padding-top: 10rpx;
+      padding-top: 14rpx;
       font-size: 23rpx;
       font-weight: 400;
       color: #a6a7a9;

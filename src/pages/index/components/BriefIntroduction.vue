@@ -54,7 +54,6 @@ function toInfo(item) {
 .brief-introduction {
   position: relative;
   z-index: 2;
-  padding-left: 26rpx;
   border-radius: 15rpx;
   margin-top: -20rpx;
   background-color: #fff;
@@ -62,6 +61,7 @@ function toInfo(item) {
 
   &__list {
     display: flex;
+	padding-left: 26rpx;
     align-items: center;
     flex-direction: row;
     overflow-y: scroll;
@@ -92,9 +92,11 @@ function toInfo(item) {
     top: 0;
     background-image: url('../../../static/home/ju_bg.png');
     width: 304rpx;
-    height: 196rpx;
+    height: 200rpx;
     background-size: cover;
     background-repeat: no-repeat;
+	border-top-left-radius: 10rpx;
+	border-bottom-left-radius: 10rpx;
     display: flex;
     align-items: center;
     padding-left: 18.5rpx;

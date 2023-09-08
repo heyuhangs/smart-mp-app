@@ -98,12 +98,13 @@
     font-weight: 400;
     color: #999999;
     line-height: 40rpx;
-    margin-top: 16rpx;
+    margin-top: 20rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+	text-indent: 50rpx;
   }
 }
 </style>

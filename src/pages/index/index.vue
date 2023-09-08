@@ -79,7 +79,7 @@ import Course from './components/Course.vue'
   }
 
   &__arrow-text {
-    width: 90rpx;
+    width: 100rpx;
     font-size: 23rpx;
     font-weight: 400;
     color: #888;

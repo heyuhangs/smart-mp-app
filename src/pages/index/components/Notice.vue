@@ -86,7 +86,7 @@
   }
 
   &__item-time {
-    padding-top: 4rpx;
+    padding-top: 14rpx;
     font-size: 23rpx;
     font-weight: 400;
     color: #a6a7a9;
