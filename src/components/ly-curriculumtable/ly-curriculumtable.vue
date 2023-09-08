@@ -42,7 +42,7 @@
 						</view>
 						<view v-else="course.length!=1">
 							<view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course"
-								:style="{ height: (course.length * 75+ course.length) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
+								:style="{ height: (course.length * 76+ course.length) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
 								v-if="course.length > 0">{{ course.name }}</view>
 						</view>
 					</view>
@@ -322,6 +322,7 @@
 				let index = 0;
 				let data = [] //日
 				let dateDetails = [] //详细日期
+				let dateList = [] // 传给父组件的参数
 				//得到当前月份
 				this.tMonth = date.getMonth() + 1;
 				//得到当前日期以及之前的
@@ -331,6 +332,7 @@
 				}
 				for (let i = index - 1; i >= 0; i--) {
 					dateDetails.push(this.getWeek(-i, dateValue, 1))
+					dateList.push(this.getWeek(-i, dateValue, 2))
 					if (this.getWeek(-i, dateValue) == 1) {
 						data.push(date.getMonth() + 1 + "月")
 						this.tMonth = date.getMonth();
@@ -344,6 +346,7 @@
 				if (weekIndex != 0) {
 					for (let i = 1; i <= 7 - weekIndex; i++) {
 						dateDetails.push(this.getWeek(i, dateValue, 1))
+						dateList.push(this.getWeek(i, dateValue, 2))
 						if (this.getWeek(i, dateValue) == 1) {
 							data.push(date.getMonth() + 2 + "月")
 							this.tMonth = date.getMonth() + 1;
@@ -357,6 +360,7 @@
 
 				//赋值 一周的日期
 				this.dateDetailsLi = dateDetails;
+				this.$emit('dateDetailsLi', dateList)
 				this.dateLi = data;
 			},
 			//根据传的时间返回单个年 月 日
@@ -378,7 +382,7 @@
 				if (state == 1) {
 					return tMonth + "月" + tDate + '日';
 				} else if (state == 2) {
-					return tYear + "/" + tMonth + "/" + tDate;
+					return tYear + "-" + (tMonth < 10 ? '0'+tMonth : tMonth) + "-" + (tDate < 10 ? '0'+tDate : tDate);
 				} else {
 					return tDate;
 				}
@@ -579,6 +583,7 @@
 				margin: 0 0 80rpx 0;
 
 				.week {
+					margin: 0 13rpx 0 0;
 					.courseList {
 						width: 100rpx;
 						word-break: break-all;
@@ -592,10 +597,9 @@
 							border-width: 0;
 							opacity: 0.8;
 							line-height: 45rpx;
-							padding: 6rpx 3rpx;
+							padding: 6rpx 6rpx;
+							width: 90rpx;
 						}
-
-						
 					}
 				}
 			}

@@ -3,7 +3,7 @@
 		<ly-curriculumtable :weekTableState="true" :palette="palette" :weekTableNumber="weekNumbers"
 			:controlWeek="controlWeek" :timetableType="timetableType" :timetables="timetables" :startdDate="startdDate"
 			:weekButton="weekButton" @nextWeekClick="nextWeekClick" @lastWeekClick="lastWeekClick"
-			@courseClick="courseClick" @weekSelectClick="weekSelectClick" @weekOpenClick="weekOpenClick">
+			@courseClick="courseClick" @weekSelectClick="weekSelectClick" @weekOpenClick="weekOpenClick" @dateDetailsLi="dateDetailsLi">
 
 		</ly-curriculumtable>
 	</view>
@@ -16,12 +16,12 @@
 	const weekButton = ref(true)//开启上一周下一周按钮
 	const startdDate = ref('')//开始时间  默认为当前时间
 	const timetables = ref([
-					['工业机器人系统拆装','工业机器人系统拆装','','','','工业机器人应用编程','工业机器人应用编程'],
-					[''],
-					['','','工坊楼314(自动化生产线实训室)','工坊楼314(自动化生产线实训室)'],
-					['','','','','工业机器人应用编程','工业机器人应用编程'],
-					['','工业机器人应用编程','工业机器人应用编程','','','','工业机器人应用编程','工业机器人应用编程'],
-				])
+		['','','','','','','',''],
+		['','','','','','','',''],
+		['','','','','','','',''],
+		['','','','','','','',''],
+		['','','','','','','','']
+	])
 	const timetableType = ref([{
 						index: '第一节',
 						name: '08:00-08:45'
@@ -65,6 +65,8 @@
 				]) // 课程颜色
 				
 	const list = ref([])
+	const dateList = ref([])
+	
 	async function init() {
 	  const { code, rows } = await scheduleList({scheduleId: 1})
 	
@@ -76,9 +78,20 @@
 	        a[b.scheduleDate] = [b];
 	      }
 	        return a;
-	    }, {});
-		console.log(result)
-		console.log(controlWeek.value)
+	    }, {}); // 按日期区分
+		let tables = []
+		for(let date in dateList.value) {
+			if (date < 5) {
+				for(let i in result) {
+				  if (i === dateList.value[date]) {
+					 result[i].forEach((item, index) => {
+						timetables.value[date][item.scheduleTime - 1] = item.courseName
+					 })
+				  }
+				}
+			}
+		}
+		console.log(timetables.value)
 	  }
 	}
 	init()
@@ -89,5 +102,9 @@
 	
 	function nextWeekClick() {
 		console.log('下周')
+	}
+	
+	function dateDetailsLi(msg) {
+		dateList.value = msg
 	}
 </script>
