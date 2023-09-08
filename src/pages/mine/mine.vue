@@ -6,8 +6,8 @@
         <image class="mine__top__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
           lazy-load="true" />
         <view>
-          <view class="mine__top__name">{{obj.nickName}}(工业机器人技术)</view>
-          <view class="mine__top__address">智能制造技术学院 </view>
+          <view class="mine__top__name">{{obj.nickName}}(缺专业字段)</view>
+          <view class="mine__top__address">缺学院字段还有左边头像 </view>
         </view>
       </view>
     </view>

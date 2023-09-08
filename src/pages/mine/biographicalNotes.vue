@@ -4,7 +4,7 @@
 			<view class="biographicalNotes__part__top">
 				<view>
 					<view class="biographicalNotes__title__name">{{ obj.name }}</view>
-					<view class="biographicalNotes__msg">{{ obj.sex }} · {{ obj.age }}岁</view>
+					<view class="biographicalNotes__msg">{{ obj.sex == 0 ? '男' : '女' }} · {{ obj.age }}岁</view>
 				</view>
 				<image class="biographicalNotes__icon__img"
 					src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
@@ -19,11 +19,11 @@
 		</view>
 
 		<view class="biographicalNotes__part">
-			<view class="biographicalNotes__title__title">实习经历</view>
+			<view class="biographicalNotes__title__mainTitle">实习经历</view>
 			<view v-for="(item, index) in obj.internshipList" :key="index" class="biographicalNotes__item">
 				<view class="biographicalNotes__title">
 					<view class="biographicalNotes__title__title">{{item.company}}</view>
-					<view class="biographicalNotes__title__msg">{{item.startDate}}-{{item.endDate}}</view>
+					<view class="biographicalNotes__title__msg_date">{{item.startDate}}-{{item.endDate}}</view>
 				</view>
 				<view class="biographicalNotes__msg">
 					{{item.content}}
@@ -32,11 +32,11 @@
 		</view>
 
 		<view class="biographicalNotes__part">
-			<view class="biographicalNotes__title__title">教育经历</view>
+			<view class="biographicalNotes__title__mainTitle">教育经历</view>
 			<view v-for="(item, index) in obj.educationList" :key="index" class="biographicalNotes__item">
 				<view class="biographicalNotes__title">
 					<view class="biographicalNotes__title__title">{{ item.company }}</view>
-					<view class="biographicalNotes__title__msg">{{item.startDate}}-{{item.endDate}}</view>
+					<view class="biographicalNotes__title__msg_date">{{item.startDate}}-{{item.endDate}}</view>
 				</view>
 				<view class="biographicalNotes__msg">
 					{{ item.majorName }}
@@ -45,14 +45,14 @@
 		</view>
 
 		<view class="biographicalNotes__part">
-			<view class="biographicalNotes__title__title">技能证书</view>
+			<view class="biographicalNotes__title__mainTitle">技能证书</view>
 			<view v-for="(item, index) in obj.certificateList" :key="index" class="biographicalNotes__card">
 				{{ item.title }}
 			</view>
 		</view>
 
 		<view class="biographicalNotes__part">
-			<view class="biographicalNotes__title__title">自我评价</view>
+			<view class="biographicalNotes__title__mainTitle">自我评价</view>
 			<view class="biographicalNotes__msg">
 				{{obj.selfEvaluation}}
 			</view>
@@ -174,18 +174,32 @@
 			&__name {
 				font-size: 60rpx;
 				padding-top: 20rpx;
+				margin-bottom: 20rpx;
+			}
+			
+			&__mainTitle {
+				font-size: 36rpx;
+				font-weight: bold;
+				margin: 30rpx 0 30rpx 0;
 			}
 
 			&__title {
 				font-size: 36rpx;
-				width: 55%;
+				width: 50%;
 				font-weight: bold;
-				margin-bottom: 52rpx;
+				margin-top: 30rpx;
 			}
 
 			&__msg {
 				color: #5E5E5E;
 				font-size: 25rpx;
+				line-height: 58rpx;
+				
+				&_date {
+					font-size: 28rpx;
+					margin-top: 30rpx;
+					color: #858585;
+				}
 			}
 		}
 
@@ -194,7 +208,9 @@
 			justify-content: flex-start;
 			align-items: center;
 			color: #5E5E5E;
-			margin: 10rpx 0;
+			margin: 15rpx 0;
+			font-size: 30rpx;
+			line-height: 50rpx;
 		}
 
 		&__card {
@@ -202,21 +218,21 @@
 			color: #5E5E5E;
 			background-color: #F5F5F5;
 			padding: 5rpx 20rpx;
-			margin: 5rpx;
+			margin: 50rpx 5rpx 5rpx 5rpx;
 		}
 
 		&__icon {
 			&__phone {
-				width: 38rpx;
-				height: 48rpx;
+				width: 30rpx;
+				height: 40rpx;
 				margin-right: 10rpx;
 			}
 
 			&__email {
-				width: 47rpx;
-				height: 35rpx;
+				width: 42rpx;
+				height: 30rpx;
 				margin-right: 10rpx;
-				margin-left: 10rpx;
+				margin-left: 15rpx;
 			}
 
 			&__img {
