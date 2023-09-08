@@ -24,7 +24,7 @@ onMounted(() => {
 <style lang="scss" scoped>
   .training-info-introduce {
     color: #13161A;
-    font-size: 35rpx;
+    font-size: 30rpx;
     font-weight: 400;
     line-height: 75rpx;
     text-indent: 80rpx;

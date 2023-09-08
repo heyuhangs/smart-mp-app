@@ -52,7 +52,6 @@
       position: fixed;
       overflow-y: scroll;
       overflow-x: hidden;
-      padding-bottom: 100rpx;
     }
 
     &__list {
@@ -60,8 +59,11 @@
       align-items: center;
       flex-direction: column;
       overflow-y: scroll;
+	  box-sizing: border-box;
+	  background-color: #ffffff;
       height: 100%;
-
+      min-height: calc(100vh - 42rpx);
+	  
       ::-webkit-scrollbar {
         width: 0;
         height: 0;
@@ -88,7 +90,7 @@
       border-bottom-left-radius: 13rpx;
       position: absolute;
       top: 0;
-      background-image: url('../../../static/home/ju_bg.png');
+      background-image: url('../../static/home/ju_bg.png');
       width: 500rpx;
       height: 300rpx;
       background-size: cover;

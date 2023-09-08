@@ -86,7 +86,6 @@
 
     &__img {
       width: 100%;
-      height: 400rpx;
     }
 
     &__title {
@@ -119,6 +118,7 @@
       .activite {
         color: #13161A;
         border-bottom: 5rpx solid #4574E0;
+		font-weight: bold;
       }
 
       .tab_content {

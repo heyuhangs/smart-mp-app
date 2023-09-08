@@ -27,7 +27,7 @@
         </view>
         <view>实训室状态</view>
       </view>
-      <view>{{ obj.state }}</view>
+      <view>{{ obj.state == 0 ? '空闲' : '占用' }}</view>
     </view>
 
     <view class="training-info-information__line">

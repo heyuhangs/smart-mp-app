@@ -130,6 +130,7 @@
       .activite {
         color: #13161A;
         border-bottom: 5rpx solid #4574E0;
+		font-weight: bold;
       }
 
       .tab_content {
