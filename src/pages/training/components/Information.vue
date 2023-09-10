@@ -27,7 +27,7 @@
         </view>
         <view>实训室状态</view>
       </view>
-      <view>{{ obj.state == 0 ? '空闲' : '占用' }}</view>
+      <view>{{ obj.stateName }}</view>
     </view>
 
     <view class="training-info-information__line">
@@ -79,6 +79,15 @@
 		const {code, data} = await trainingroomInfo({id: item.trainId})
 			
 		if (code === 200 && data) {
+			if (data.state === 'using') {
+				item.stateName = '在用'
+			} else if (data.state === 'appointed') {
+				data.stateName = '已约'
+			} else if (data.state === 'free') {
+				data.stateName = '空闲'
+			} else {
+				data.stateName = ''
+			}
 			obj.value = data
 			isShow.value = true
 		}
