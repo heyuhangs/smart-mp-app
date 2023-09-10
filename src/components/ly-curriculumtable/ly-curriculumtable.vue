@@ -42,7 +42,7 @@
 						</view>
 						<view v-else="course.length!=1">
 							<view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course"
-								:style="{ height: (course.length * 76+ course.length) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
+								:style="{ height: (course.length * 76 + course.length) + 'px', background: 'rgba(' + course.backgroundColor + ', 0.2)', color:  'rgba(' + course.backgroundColor + ')'}"
 								v-if="course.length > 0">{{ course.name }}</view>
 						</view>
 					</view>
@@ -538,7 +538,7 @@
 
 		.main {
 			position: relative;
-			margin-top: 2px;
+			// margin-top: 2px;
 			padding-bottom: 160rpx;
 
 			.row {
@@ -562,7 +562,7 @@
 
 					.index {
 						padding-bottom: 8rpx;
-						padding-top: 16rpx;
+						padding-top: 32rpx;
 						font-size: 28rpx;
 					}
 
@@ -597,7 +597,7 @@
 							border-width: 0;
 							opacity: 0.8;
 							line-height: 45rpx;
-							padding: 6rpx 6rpx;
+							padding: 5rpx 6rpx;
 							width: 90rpx;
 						}
 					}
