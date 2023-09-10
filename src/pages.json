@@ -110,6 +110,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/mine/biographicalNotesList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "简历列表",
+                "navigationBarBackgroundColor": "#206CFF"
+            }
+            
+        }
     ],
 
   "tabBar": {

@@ -67,15 +67,20 @@
 </template>
 
 <script setup>
-	import { ref } from 'vue'
-	
+	import { ref, onMounted } from 'vue'
 	import { getResumeInfo } from '@/service/mine'
 	import env from '@/host'
-	
+	import {onLoad} from "@dcloudio/uni-app";
 	const obj = ref({})
-	
+	let resumeId = null;
+	onLoad((option) => {
+		resumeId=option.resumeId
+	});
+	onMounted(()=>{
+		init()
+	})
 	async function init() {
-	  const { code, data } = await getResumeInfo()
+	  const { code, data } = await getResumeInfo({resumeId: resumeId})
 	
 	  if (code === 200 && data) {
 		  if(data.birth) {
@@ -84,8 +89,6 @@
 	    obj.value = data
 	  }
 	}
-	
-	init()
 	
 	/* *
 	 * 通过生日算年龄

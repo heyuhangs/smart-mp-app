@@ -21,7 +21,7 @@
         <image class="mine__menu__back" src="@/static/basic/back.png" />
       </view>
 
-      <view class="mine__menu__item" @click="toBiographicalNotes(obj.id)">
+      <view class="mine__menu__item" @click="toBiographicalNotesList()">
         <view class="mine__menu__left">
           <image class="mine__menu__icon" src="@/static/mine/biographicalNotes.png" />
           <view class="mine__menu__name">个人简历</view>
@@ -40,8 +40,8 @@
 	
 	const obj = ref(getUser())
 
-  function toBiographicalNotes(id) {
-    uni.navigateTo({url: '/pages/mine/biographicalNotes?id=' + id})
+  function toBiographicalNotesList() {
+    uni.navigateTo({url: '/pages/mine/biographicalNotesList'})
   }
   function toCurriculum() {
     uni.navigateTo({url: '/pages/mine/curriculum'})

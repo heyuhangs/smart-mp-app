@@ -19,12 +19,29 @@ export async function scheduleList(params = {}) {
 }
 
 /* *
+ * 获取简历列表
+ */
+export async function getResumeList(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/studentTerminal/resume/getResumeList`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
  * 获取简历
  */
 export async function getResumeInfo(params = {}) {
   try {
     return await request({
-      url: `${env.api}/studentTerminal/resume/getResumeInfo/1`,
+      url: `${env.api}/studentTerminal/resume/getResumeInfo/` + params.resumeId,
       method: 'get'
     })
   } catch (err) {
