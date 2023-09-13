@@ -3,7 +3,7 @@
     <view class="mine__top">
       <image class="mine__top__bg" src="@/static/mine/bg.png" />
       <view class="mine__top__user">
-        <image class="mine__top__img" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+        <image class="mine__top__img" :src="`${env.imgUrl}${obj.txUrl}`"
           lazy-load="true" />
         <view>
           <view class="mine__top__name">{{obj.nickName}}(缺专业字段)</view>

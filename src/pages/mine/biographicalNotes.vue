@@ -7,7 +7,7 @@
 					<view class="biographicalNotes__msg">{{ obj.sex == 0 ? '男' : '女' }} · {{ obj.age }}岁</view>
 				</view>
 				<image class="biographicalNotes__icon__img"
-					src="https://tse4-mm.cn.bing.net/th/id/OIP-C.cRT6RCVvwHTayfPtBx1GOAHaE8?w=266&h=180&c=7&r=0&o=5&dpr=2&pid=1.7"
+					:src="`${env.imgUrl}${obj.txUrl}`"
 					lazy-load="true" />
 			</view>
 			<view class="biographicalNotes__msg">
