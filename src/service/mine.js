@@ -51,3 +51,55 @@ export async function getResumeInfo(params = {}) {
     }
   }
 }
+
+/* *
+ * 设备存取-- 存储列表
+ */
+export async function getListSave(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/box/info/list-save`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
+ * 设备存取-- 取用列表
+ */
+export async function getListOpen(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/box/info/list-open`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
+ * 设备存取-- 开门请求
+ */
+export async function open(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/box/info/open`,
+      method: 'POST',
+      data: params
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}

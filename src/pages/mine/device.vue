@@ -1,30 +1,65 @@
 <template>
 	<view class="device">
-		<image class="device__none" v-if="deviceList === ''" src="@/static/mine/device.png"></image>
+		<image class="device__none" v-if="deviceList.length !== 0" src="@/static/mine/device.png"></image>
 		<view v-else>
-			<view class="device__item">
-				<view class="device__item__title">归属柜门编号</view>
-				<view class="device__item__msg">06</view>
-			</view>
-			<view class="device__item">
-				<view class="device__item__title">取用时间</view>
-				<view class="device__item__msg">2023-09-03 11:49:49</view>
+			<view v-for="(item, index) in 2" :key="index" class="device__content">
+				<view class="device__item">
+					<view class="device__item__title">归属柜门编号</view>
+					<view class="device__item__msg">{{ item.gzbh }}</view>
+				</view>
+				<view class="device__item">
+					<view class="device__item__title">取用时间</view>
+					<view class="device__item__msg">2023-09-03 11:49:49</view>
+				</view>
+				<view class="device__item device__item__switch">
+					<switch @change="onChange(item)" />
+				</view>
 			</view>
 		</view>
 		<view class="device__button">
-			<view class="device__button__left">取设备</view>
-			<view class="device__button__right">存设备</view>
+			<view class="device__button__left" :class="isActive === 0 ? 'isActive' : ''" @click="handleTab(0)">取设备</view>
+			<view class="device__button__right" :class="isActive === 1 ? 'isActive' : ''" @click="handleTab(1)">存设备</view>
 		</view>
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				deviceList: ''
-			};
+<script setup>
+	import { ref } from 'vue'
+	import {getListSave, getListOpen, open} from '@/service/mine'
+	import env from '@/host'
+	
+	const deviceList = ref([])
+	const isActive = ref(0) // 0  取   1  存
+	async function init(index) {
+		if (index === 1) {
+			const { code, data } = await getListSave()
+			
+			if (code === 200 && data) {
+			  deviceList.value = data
+			}
+		} else if(index === 0) {
+			const { code, data } = await getListOpen()
+			
+			if (code === 200 && data) {
+			  deviceList.value = data
+			}
 		}
+	}
+	init(isActive.value)
+	
+	//  设备开门
+	async function onChange(item) {
+		const { code, data } = await open({ "gzbh": item.gzbh,"xmbh": item.xmbh,"boxId": item.boxId })
+		
+		if (code === 200 && data) {
+		  uni.showToast({ title: '成功!', icon: 'none' })
+		}
+	}
+	
+	// 切换存取设备列表
+	function handleTab(index) {
+		isActive.value = index
+		init(index)
 	}
 </script>
 
@@ -61,6 +96,16 @@
 			&__title {
 				color: #000000;
 			}
+			
+			&__switch {
+				display: flex;
+				justify-content: flex-end;
+				flex-direction: row;
+			}
+		}
+		
+		&__content {
+			margin: 10rpx 0;
 		}
 
 		&__button {
@@ -80,7 +125,7 @@
 				width: 45%;
 				border-bottom-left-radius: 80rpx;
 				border-top-left-radius: 80rpx;
-				background: linear-gradient(90deg, #7595FF, #3573FF)
+				background: linear-gradient(90deg, #3573FF, #2061FF)
 			}
 
 			&__right {
@@ -88,6 +133,10 @@
 				border-bottom-right-radius: 80rpx;
 				border-top-right-radius: 80rpx;
 				background: linear-gradient(90deg, #3573FF, #2061FF)
+			}
+			
+			.isActive {
+				background: linear-gradient(90deg, #7595FF, #618aff)
 			}
 		}
 	}
