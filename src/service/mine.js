@@ -2,12 +2,29 @@ import { request } from '@/utils/request'
 import env from '@/host'
 
 /* *
+ * 获取当前周数
+ */
+export async function getWxWeekList(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/course/schedule/getWxWeekList?week=` + params.week,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
  * 获取课程日历列表
  */
 export async function scheduleList(params = {}) {
   try {
     return await request({
-      url: `${env.api}/course/schedule/list?scheduleId=` + params.scheduleId,
+      url: `${env.api}/course/schedule/list?dateList=` + params.dateList + `&scheduleId=` + params.scheduleId,
       method: 'get'
     })
   } catch (err) {

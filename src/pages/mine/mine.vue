@@ -39,7 +39,6 @@
 	import env from '@/host'
 	
 	const obj = ref(getUser())
-	console.log(obj.value)
   function toBiographicalNotesList() {
     uni.navigateTo({url: '/pages/mine/biographicalNotesList'})
   }

@@ -6,7 +6,7 @@
 				<text class="text-lg">上周</text>
 			</view>
 			<view class="content" @click="weekOpen">
-				<view>{{ dateDetailsLi[0] }}至{{ dateDetailsLi[6] }}</view>
+				<view>{{ currentWeekObj.days }}</view>
 				<uni-icons type="bottom" size="15"></uni-icons>
 			</view>
 			<view class="action" @click="nextWeek">
@@ -76,6 +76,12 @@
 					return [
 
 					]
+				}
+			},
+			currentWeekObj: {
+				type: Object,
+				default: () => {
+					return {}
 				}
 			},
 			week: {
@@ -281,30 +287,30 @@
 			},
 			//上一周
 			lastWeek() {
-				if (this.nowWeek == 0) {
-					console.log("已经是第一周了")
-					return
-				}
-				this.nowWeek -= 1
-				var index = this.nowWeek * 7
-				let data2 = this.getfun_date(index)
-				//console.log("这是上第",this.nowWeek,"周",index,"以后")
-				this.GetTime(data2)
+				// if (this.nowWeek == 0) {
+				// 	console.log("已经是第一周了")
+				// 	return
+				// }
+				// this.nowWeek -= 1
+				// var index = this.nowWeek * 7
+				// let data2 = this.getfun_date(index)
+				// //console.log("这是上第",this.nowWeek,"周",index,"以后")
+				// this.GetTime(data2)
 				//子组件事件
-				this.$emit('lastWeekClick', this.nowWeek + 1)
+				this.$emit('lastWeekClick', this.nowWeek)
 			},
 			//下一周
 			nextWeek() {
-				this.nowWeek += 1
-				var index = (this.nowWeek - 1) * 7
-				let i = this.afterDate + 1 + index
+				// this.nowWeek += 1
+				// var index = (this.nowWeek - 1) * 7
+				// let i = this.afterDate + 1 + index
 
-				let data2 = this.getfun_date(i)
-				// console.log("这是下第",this.nowWeek,"周",index,i ,"以后","时间是",data2)
-				this.GetTime(data2)
+				// let data2 = this.getfun_date(i)
+				// // console.log("这是下第",this.nowWeek,"周",index,i ,"以后","时间是",data2)
+				// this.GetTime(data2)
 
 				//子组件事件
-				this.$emit('nextWeekClick', this.nowWeek + 1)
+				this.$emit('nextWeekClick', this.nowWeek)
 			},
 			//计算一周日期
 			GetTime(dateValue) {
@@ -592,7 +598,7 @@
 						font-size: 24rpx;
 
 						.course {
-							text-align: center;
+							text-align: left;
 							border-style: solid;
 							border-width: 0;
 							opacity: 0.8;
