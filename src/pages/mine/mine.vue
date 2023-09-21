@@ -3,11 +3,11 @@
     <view class="mine__top">
       <image class="mine__top__bg" src="@/static/mine/bg.png" />
       <view class="mine__top__user">
-        <image class="mine__top__img" :src="`${env.imgUrl}${obj.txUrl}`"
+        <image class="mine__top__img" :src="`${env.imgUrl}${obj.avatar}`"
           lazy-load="true" />
         <view>
-          <view class="mine__top__name">{{obj.nickName}}(缺专业字段)</view>
-          <view class="mine__top__address">缺学院字段还有左边头像 </view>
+          <view class="mine__top__name">{{obj.nickName}}({{ obj.majorName }})</view>
+          <view class="mine__top__address"> {{ obj.schoolName }} </view>
         </view>
       </view>
     </view>
@@ -39,7 +39,7 @@
 	import env from '@/host'
 	
 	const obj = ref(getUser())
-
+	console.log(obj.value)
   function toBiographicalNotesList() {
     uni.navigateTo({url: '/pages/mine/biographicalNotesList'})
   }
