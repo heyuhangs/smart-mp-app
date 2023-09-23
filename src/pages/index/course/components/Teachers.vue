@@ -53,6 +53,7 @@
       height: 140rpx;
       border-radius: 50% 50%;
       margin-right: 28rpx;
+	  background-color: #f2f2f2;
     }
 
     &__info {

@@ -67,6 +67,8 @@
 			width: 168rpx;
 			height: 112rpx;
 			margin-right: 28rpx;
+			background-color: #f2f2f2;
+			border-radius: 13rpx;
 		}
 
 		&__list-info {
