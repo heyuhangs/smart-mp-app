@@ -95,25 +95,38 @@
 	 * */
 	 async function handleDownload() {
 		 const { code, data } = await download({resumeId: resumeId})
-		 	
+		 
 		 if (code === 200 && data) {
 			uni.downloadFile({
-			 	url: env.imgUr + data.ossFilePath, //文件链接  
+			 	url: env.imgUrl + data.ossFilePath, //文件链接   
 			 	success: (res) => {
-			 		if (res.statusCode === 200) {
-			 		   var oA = document.createElement("a")
-			 		   oA.download = data.originalFileName
-			 		   oA.href = res.tempFilePath
-			 		   document.body.appendChild(oA)
-			 		   oA.click()
-					   oA.remove()
-					   console.log(res.tempFilePath)
-					   uni.showToast({
-					       icon: 'none',
-					   	mask: true,
-					   	title: '下载成功',
-					   });
-			  	    }
+					var tempFilePath = res.tempFilePath
+					
+					uni.saveFile({
+						tempFilePath: tempFilePath,
+						success: (rep) => {
+							var savedFilePath = rep.savedFilePath
+
+							uni.showToast({
+							    icon: 'none',
+								mask: true,
+								title: '已下载至' + savedFilePath,
+							});
+							setTimeout(() => {
+								uni.openDocument({
+									filePath: tempFilePath,
+									success: (m) => {}
+								})
+							}, 3000)
+						},
+						fail: () => {
+							uni.showToast({
+							    icon: 'none',
+								mask: true,
+								title: '保存失败',
+							});
+						}
+					})
 			    },
 			 	fail: (err) => {
 			 		uni.showToast({
