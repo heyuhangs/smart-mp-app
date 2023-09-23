@@ -70,7 +70,7 @@ export async function getResumeInfo(params = {}) {
 }
 
 /* *
- * 简历导出
+ * 简历导出PDF
  */
 export async function download(params = {}) {
   try {

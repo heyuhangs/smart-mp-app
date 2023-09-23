@@ -90,8 +90,6 @@
 				rows.forEach((a, b) => {
 				    result[a.scheduleDate] = a.scheduleVoList
 				}) // 整理课程
-				console.log(data.dateList)
-				console.log(dateList.value)
 				for (let date in dateList.value) {
 					for (let i in result) {
 						if (i === dateList.value[date]) {
