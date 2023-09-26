@@ -63,6 +63,7 @@
 	  background-color: #ffffff;
       height: 100%;
       min-height: calc(100vh - 42rpx);
+	  padding-bottom: 50rpx;
 	  
       ::-webkit-scrollbar {
         width: 0;
