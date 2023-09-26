@@ -457,10 +457,14 @@
 		display: flex;
 		position: relative;
 		align-items: center;
-		min-height: 70upx;
+		min-height: 100upx;
 		justify-content: space-between;
 		margin: 0px 60rpx;
 		font-size: 20rpx;
+		
+		.content {
+			font-size: 28rpx;
+		}
 
 		.action {
 			background-color: #4574E0;
@@ -497,7 +501,7 @@
 			}
 
 			.month-text {
-				width: 150rpx;
+				width: 100rpx;
 				height: 40%;
 				text-align: center;
 				font-size: 28rpx;
@@ -563,17 +567,17 @@
 
 				.time-item {
 					height: 100%;
-					width: 150rpx;
+					width: 100rpx;
 					text-align: center;
 
 					.index {
 						padding-bottom: 8rpx;
-						padding-top: 32rpx;
+						padding-top: 36rpx;
 						font-size: 28rpx;
 					}
 
 					.time {
-						font-size: 24rpx;
+						font-size: 18rpx;
 						color: $uni-text-color-grey;
 					}
 				}
@@ -582,16 +586,16 @@
 			.course-container {
 				position: absolute;
 				top: 0;
-				left: 160rpx;
-				width: calc(100% - 160rpx);
+				left: 110rpx;
+				width: calc(100% - 110rpx);
 				height: 100%;
 				display: flex;
 				margin: 0 0 80rpx 0;
 
 				.week {
-					margin: 0 13rpx 0 0;
+					margin: 0;
 					.courseList {
-						width: 100rpx;
+						width: 122rpx;
 						word-break: break-all;
 						color: white;
 						overflow: hidden;
@@ -603,8 +607,8 @@
 							border-width: 0;
 							opacity: 0.8;
 							line-height: 45rpx;
-							padding: 5rpx 6rpx;
-							width: 90rpx;
+							padding: 6rpx;
+							width: 115rpx;
 						}
 					}
 				}

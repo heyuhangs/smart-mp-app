@@ -6,9 +6,7 @@
 					<view class="biographicalNotes__title__name">{{ obj.name }}</view>
 					<view class="biographicalNotes__msg">{{ obj.sex == 0 ? '男' : '女' }} · {{ obj.age }}岁</view>
 				</view>
-				<image class="biographicalNotes__icon__img"
-					:src="`${env.imgUrl}${obj.txUrl}`"
-					lazy-load="true" />
+				<image class="biographicalNotes__icon__img" :src="avatarPath" lazy-load="true" />
 			</view>
 			<view class="biographicalNotes__msg">
 				<image class="biographicalNotes__icon__phone" src="@/static/mine/phone.png" />
@@ -23,7 +21,7 @@
 			<view v-for="(item, index) in obj.internshipList" :key="index" class="biographicalNotes__item">
 				<view class="biographicalNotes__title">
 					<view class="biographicalNotes__title__title">{{item.company}}</view>
-					<view class="biographicalNotes__title__msg_date">{{item.startDate}}-{{item.endDate}}</view>
+					<view class="biographicalNotes__title__msg_date">{{item.startDate}}~{{item.endDate}}</view>
 				</view>
 				<view class="biographicalNotes__msg">
 					{{item.content}}
@@ -36,7 +34,7 @@
 			<view v-for="(item, index) in obj.educationList" :key="index" class="biographicalNotes__item">
 				<view class="biographicalNotes__title">
 					<view class="biographicalNotes__title__title">{{ item.company }}</view>
-					<view class="biographicalNotes__title__msg_date">{{item.startDate}}-{{item.endDate}}</view>
+					<view class="biographicalNotes__title__msg_date">{{item.startDate}}~{{item.endDate}}</view>
 				</view>
 				<view class="biographicalNotes__msg">
 					{{ item.majorName }}
@@ -71,6 +69,8 @@
 	import { download, getResumeInfo } from '@/service/mine'
 	import env from '@/host'
 	import {onLoad} from "@dcloudio/uni-app";
+	import avatarFemaleImage from '@/static/mine/avatar-female.png'
+	import avatarMaleImage from '@/static/mine/avatar-male.png'
 	const obj = ref({})
 	let resumeId = null;
 	onLoad((option) => {
@@ -79,6 +79,10 @@
 	onMounted(()=>{
 		init()
 	})
+	
+	const avatarPath = ref('')
+	
+	
 	async function init() {
 	  const { code, data } = await getResumeInfo({resumeId: resumeId})
 	
@@ -87,6 +91,16 @@
 			  data.age = jsGetAge(data.birth)
 		  }
 	    obj.value = data
+		
+		if (obj.value.avatar) { // 头像
+			avatarPath.value = `${env.imgUrl}${obj.avatar}`
+		} else {
+			if (obj.value.sex === 0) {
+				avatarPath.value =  avatarMaleImage
+			} else {
+				avatarPath.value =  avatarFemaleImage
+			}
+		}
 	  }
 	}
 	
@@ -291,6 +305,7 @@
 				border-radius: 50% 50%;
 				width: 148rpx;
 				height: 148rpx;
+				background-color: #f2f2f2;
 			}
 		}
 
