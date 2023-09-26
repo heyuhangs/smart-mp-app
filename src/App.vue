@@ -1,7 +1,8 @@
 <script setup>
-import { getToken, setUser } from '@/store/token'
+import { getToken } from '@/store/token'
 
-import { getLoginUserInfo } from '@/service/login'
+import { initUserStore } from '@/modules/login'
+
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 
 onLaunch(() => {
@@ -28,16 +29,6 @@ const checkLoginState = async () => {
   uni.reLaunch({
     url: `/pages/login/login`
   })
-  return false
-}
-
-const initUserStore = async () => {
-  const { code, data } = await getLoginUserInfo()
-  if (code === 200 && data) {
-    setUser(data)
-    return true
-  }
-
   return false
 }
 </script>
