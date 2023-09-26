@@ -63,6 +63,8 @@
     &__img {
       width: 100%;
       border-radius: 25rpx;
+	  background-color: #f2f2f2;
+	  border-radius: 13rpx;
     }
 
     &__content {

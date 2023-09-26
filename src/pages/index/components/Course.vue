@@ -76,6 +76,8 @@
     width: 140rpx;
     height: 140rpx;
     margin-right: 28rpx;
+		background-color: #f2f2f2;
+		border-radius: 13rpx;
   }
 
   &__list-info {

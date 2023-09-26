@@ -80,9 +80,10 @@ function toInfo(item) {
   }
 
   &__img {
-    border-radius: 13rpx;
     width: 438rpx;
     height: 200rpx;
+	background-color: #f2f2f2;
+	border-radius: 13rpx;
   }
 
   &__c {

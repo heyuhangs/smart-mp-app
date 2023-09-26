@@ -79,6 +79,7 @@
 
 		if (code === 200 && data) {
 			currentWeek.value = data.week
+			dateList.value = data.dateList.split(',')
 			currentWeekObj.value = data
 			const { code, rows } = await scheduleList({
 				dateList: data.dateList,
@@ -89,8 +90,6 @@
 				rows.forEach((a, b) => {
 				    result[a.scheduleDate] = a.scheduleVoList
 				}) // 整理课程
-				// console.log(result)
-				console.log(dateList.value)
 				for (let date in dateList.value) {
 					for (let i in result) {
 						if (i === dateList.value[date]) {
@@ -100,7 +99,7 @@
 						}
 					}
 				}
-				// console.log(timetables.value)
+				console.log(timetables.value)
 			}
 		}
 	}
@@ -116,9 +115,5 @@
 		console.log('下周')
 		currentWeek.value = currentWeek.value + 1
 		init()
-	}
-
-	function dateDetailsLi(msg) {
-		dateList.value = msg
 	}
 </script>

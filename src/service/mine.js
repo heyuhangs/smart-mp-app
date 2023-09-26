@@ -70,6 +70,23 @@ export async function getResumeInfo(params = {}) {
 }
 
 /* *
+ * 简历导出PDF
+ */
+export async function download(params = {}) {
+  try {
+    return await request({
+      url: `${env.api}/studentTerminal/download?resumeId=` + params.resumeId,
+      method: 'post'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+/* *
  * 设备存取-- 存储列表
  */
 export async function getListSave(params = {}) {

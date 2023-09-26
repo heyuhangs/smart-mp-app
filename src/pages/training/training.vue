@@ -82,6 +82,7 @@
       border-radius: 13rpx;
       width: 700rpx;
       height: 300rpx;
+			background-color: #f2f2f2;
     }
 
     &__c {

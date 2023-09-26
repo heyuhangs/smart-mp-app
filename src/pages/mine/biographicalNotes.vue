@@ -58,7 +58,7 @@
 			</view>
 		</view>
 
-		<view class="biographicalNotes__button">
+		<view class="biographicalNotes__button" @click="handleDownload()">
 			<image class="biographicalNotes__icon__annex" src="@/static/mine/annex.png" />
 			<view>导出pdf</view>
 		</view>
@@ -68,7 +68,7 @@
 
 <script setup>
 	import { ref, onMounted } from 'vue'
-	import { getResumeInfo } from '@/service/mine'
+	import { download, getResumeInfo } from '@/service/mine'
 	import env from '@/host'
 	import {onLoad} from "@dcloudio/uni-app";
 	const obj = ref({})
@@ -89,6 +89,55 @@
 	    obj.value = data
 	  }
 	}
+	
+	/* *
+	 * 导出 PDF
+	 * */
+	 async function handleDownload() {
+		 const { code, data } = await download({resumeId: resumeId})
+		 
+		 if (code === 200 && data) {
+			uni.downloadFile({
+			 	url: env.imgUrl + data.ossFilePath, //文件链接   
+			 	success: (res) => {
+					var tempFilePath = res.tempFilePath
+					
+					uni.saveFile({
+						tempFilePath: tempFilePath,
+						success: (rep) => {
+							var savedFilePath = rep.savedFilePath
+
+							uni.showToast({
+							    icon: 'none',
+								mask: true,
+								title: '已下载至' + savedFilePath,
+							});
+							setTimeout(() => {
+								uni.openDocument({
+									filePath: tempFilePath,
+									success: (m) => {}
+								})
+							}, 3000)
+						},
+						fail: () => {
+							uni.showToast({
+							    icon: 'none',
+								mask: true,
+								title: '保存失败',
+							});
+						}
+					})
+			    },
+			 	fail: (err) => {
+			 		uni.showToast({
+			 		    icon: 'none',
+			 			mask: true,
+			 			title: '下载失败',
+			 		});
+			 	},
+			})
+		 }
+	 }
 	
 	/* *
 	 * 通过生日算年龄
