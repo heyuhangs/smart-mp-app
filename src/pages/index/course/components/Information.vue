@@ -27,7 +27,7 @@
         </view>
         <view>课时</view>
       </view>
-      <view>{{ obj.startDate }}-{{ obj.endDate}}({{ obj.hours}}课时)</view>
+      <view>{{ obj.startDate }}~{{ obj.endDate}}({{ obj.hours}}学时)</view>
     </view>
 
     <view class="training-info-information__line">

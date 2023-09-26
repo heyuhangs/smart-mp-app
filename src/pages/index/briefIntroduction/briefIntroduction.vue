@@ -61,6 +61,7 @@
 			align-items: center;
 			flex-direction: row;
 			border-bottom: 1rpx solid #F2F2F2;
+			align-items: flex-start;
 		}
 
 		&__list-img {
