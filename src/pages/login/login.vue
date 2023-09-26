@@ -29,6 +29,7 @@ import { ref } from 'vue'
 
 import { setToken } from '@/store/token'
 import { studentNumberLogin } from '@/service/login'
+import { initUserStore } from '@/modules/login'
 
 const studentNumber = ref('15804004038')
 const password = ref('1Q2w3e4r5t')
@@ -55,6 +56,7 @@ async function login() {
 
     if (code === 200 && data.token) {
       setToken(data.token)
+      await initUserStore()
       uni.showToast({ title: '登录成功！', icon: 'none' })
 
       uni.switchTab({
