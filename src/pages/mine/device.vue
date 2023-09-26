@@ -7,9 +7,13 @@
 					<view class="device__item__title">归属柜门编号</view>
 					<view class="device__item__msg">{{ item.gzbh }}</view>
 				</view>
-				<view class="device__item">
+				<view v-if="isActive === 0" class="device__item">
 					<view class="device__item__title">取用时间</view>
 					<view class="device__item__msg">2023-09-03 11:49:49</view>
+				</view>
+				<view v-if="isActive === 1" class="device__item">
+					<view class="device__item__title">箱子编码</view>
+					<view class="device__item__msg">{{ item.xmbh }}</view>
 				</view>
 				<view class="device__item device__item__switch">
 					<switch @change="onChange(item)" />
