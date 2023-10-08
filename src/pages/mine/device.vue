@@ -1,5 +1,5 @@
 <template>
-	<view class="device">
+	<view v-show="isShow" class="device">
 		<image class="device__none" v-if="deviceList.length === 0" src="@/static/mine/device.png"></image>
 		<view v-else>
 			<view v-for="(item, index) in deviceList" :key="index" class="device__content">
@@ -33,19 +33,24 @@
 	import env from '@/host'
 	
 	const deviceList = ref([])
+	const isShow = ref(false)
 	const isActive = ref(0) // 0  取   1  存
 	async function init(index) {
+		uni.showLoading({title: 'loading'});
+		isShow.value = false
 		if (index === 1) {
 			const { code, data } = await getListSave()
-			
 			if (code === 200 && data) {
 			  deviceList.value = data
+			  isShow.value = true
+			  uni.hideLoading();
 			}
 		} else if(index === 0) {
 			const { code, data } = await getListOpen()
-			
 			if (code === 200 && data) {
 			  deviceList.value = data
+			  isShow.value = true
+			  uni.hideLoading();
 			}
 		}
 	}

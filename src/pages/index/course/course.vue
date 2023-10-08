@@ -1,5 +1,5 @@
 <template>
-	<view class="course">
+	<view v-show="isShow" class="course">
 		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
 		<view v-else class="course__list">
 			<view v-for="item in list" class="course__list-item" @click="toInfo(item)">
@@ -24,14 +24,17 @@
 	import env from '@/host'
 
 	const list = ref([])
+	const isShow = ref(false)
 	async function init() {
+		uni.showLoading({title: 'loading'});
 		const {
 			code,
 			rows
 		} = await courseList()
-
 		if (code === 200 && rows) {
 			list.value = rows
+			isShow.value = true
+			uni.hideLoading();
 		}
 	}
 	init()

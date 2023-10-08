@@ -1,5 +1,5 @@
 <template>
-	<view class="briefIntroduction">
+	<view v-show="isShow" class="briefIntroduction">
 		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
 		<view v-else class="briefIntroduction__list">
 			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo(item)">
@@ -19,11 +19,14 @@
 	import env from '@/host'
 
 	const list = ref([])
+	const isShow = ref(false)
 	async function init() {
+		uni.showLoading({title: 'loading'});
 		const {code, data} = await elegantList({doorCustomType: 2})
-
 		if (code === 200 && data) {
 			list.value = data
+			isShow.value = true
+			uni.hideLoading();
 		}
 	}
 
