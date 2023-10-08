@@ -1,6 +1,7 @@
 <template>
 	<view class="biograohicalNotesList">
-		<view class="biograohicalNotesList__list">
+		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
+		<view v-else class="biograohicalNotesList__list">
       <view v-for="(item, index) in list" :key="index" class="biograohicalNotesList__list__item" @click="toInfo(item)">
         <view class="biograohicalNotesList__list__content">
           <text class="biograohicalNotesList__list__title">{{ item.name }}</text>

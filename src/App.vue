@@ -35,4 +35,13 @@ const checkLoginState = async () => {
 
 <style>
 /*每个页面公共css */
+/* 列表--暂无数据 */
+.none {
+	width: 400rpx;
+	height: 400rpx;
+	position: absolute;
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+}
 </style>

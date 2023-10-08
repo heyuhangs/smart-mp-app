@@ -1,8 +1,8 @@
 <template>
 	<view class="device">
-		<image class="device__none" v-if="deviceList.length !== 0" src="@/static/mine/device.png"></image>
+		<image class="device__none" v-if="deviceList.length === 0" src="@/static/mine/device.png"></image>
 		<view v-else>
-			<view v-for="(item, index) in 2" :key="index" class="device__content">
+			<view v-for="(item, index) in deviceList" :key="index" class="device__content">
 				<view class="device__item">
 					<view class="device__item__title">归属柜门编号</view>
 					<view class="device__item__msg">{{ item.gzbh }}</view>
@@ -91,11 +91,11 @@
 			align-items: center;
 			justify-content: space-between;
 			color: #879098;
-			line-height: 150rpx;
+			line-height: 100rpx;
 			border-bottom: 2rpx solid #F2F2F2;
 			background-color: #ffffff;
 			padding: 0 30rpx;
-			font-size: 36rpx;
+			font-size: 28rpx;
 
 			&__title {
 				color: #000000;

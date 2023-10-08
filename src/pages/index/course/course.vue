@@ -1,6 +1,7 @@
 <template>
 	<view class="course">
-		<view class="course__list">
+		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
+		<view v-else class="course__list">
 			<view v-for="item in list" class="course__list-item" @click="toInfo(item)">
 				<image class="course__list-img" :src="`${env.imgUrl}${item.courseCover}`" />
 				<view class="course__list-info">

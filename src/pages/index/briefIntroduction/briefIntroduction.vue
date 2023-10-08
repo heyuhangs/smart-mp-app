@@ -1,6 +1,7 @@
 <template>
 	<view class="briefIntroduction">
-		<view class="briefIntroduction__list">
+		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
+		<view v-else class="briefIntroduction__list">
 			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo(item)">
 				<view class="briefIntroduction__list-info">
 					<text class="briefIntroduction__list-title">{{ item.mainTitle }}</text>

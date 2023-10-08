@@ -1,7 +1,8 @@
 <template>
   <view class="training">
     <view class="training__content">
-      <view class="training__list">
+	  <image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
+      <view v-else class="training__list">
         <view v-for="(item, index) in list" class="training__list-item" @click="toInfo(item)">
           <image class="training__img"  :src="`${env.imgUrl}${item.resourceUrl}`"
             lazy-load="true" />
