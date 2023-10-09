@@ -35,6 +35,8 @@
 				<image class="mine__menu__back" src="@/static/basic/back.png" />
 			</view>
 		</view>
+		
+		<view class="logout">退出登录</view>
 	</view>
 </template>
 
@@ -169,6 +171,22 @@
 				width: 12rpx;
 				height: 22rpx;
 			}
+		}
+	    
+		.logout {
+			background-color: #E2E2E2;
+			color: #000000;
+			text-align: center;
+			line-height: 100rpx;
+			border-radius: 10rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 28rpx;
+			position: absolute;
+			bottom: 120rpx;
+			width: calc(100% - 60rpx);
+			margin: 0 30rpx;
 		}
 	}
 </style>
