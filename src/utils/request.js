@@ -4,7 +4,7 @@ function getHeader(params) {
   const token = getToken()
 
   const header = {
-    'Authorization': 'Bearer ' + token
+    Authorization: 'Bearer ' + token
   }
 
   return header
@@ -26,6 +26,14 @@ export async function request(params) {
         method: params.method || 'GET',
         header,
         success: (res) => {
+          if (res && res.code === 401) {
+            uni.showToast({ title: '登录失效', icon: 'none' })
+            setTimeout(()=>{
+              uni.reLaunch({
+                url: `/pages/login/login`
+              })
+            }, 800)
+          }
           resolve(res)
         },
         fail: (err) => {

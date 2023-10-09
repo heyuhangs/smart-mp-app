@@ -59,7 +59,6 @@
 
 		&__list {
 			box-sizing: border-box;
-			margin-top: 42rpx;
 			padding: 5rpx 38rpx 38rpx 38rpx;
 			background-color: #ffffff;
 			border-radius: 20rpx;
@@ -85,6 +84,7 @@
 		&__list-info {
 			flex: 1;
 			display: flex;
+			align-items: start;
 			flex-direction: column;
 		}
 
@@ -95,6 +95,7 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			margin-top: 12rpx;
 		}
 
 		&__list-desc {
@@ -108,7 +109,6 @@
 			display: -webkit-box;
 			-webkit-line-clamp: 2;
 			-webkit-box-orient: vertical;
-			text-indent: 50rpx;
 		}
 	}
 </style>
