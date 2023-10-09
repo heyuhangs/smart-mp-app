@@ -22,7 +22,7 @@
 	const list = ref([])
 	const isShow = ref(false)
 	async function init() {
-	  uni.showLoading({title: 'loading'});
+	  uni.showLoading({title: ''});
 	  const { code, data } = await getResumeList()
 	  if (code === 200 && data) {
 	    list.value = data

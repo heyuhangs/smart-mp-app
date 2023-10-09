@@ -27,7 +27,7 @@
 	const isShow = ref(false)
 	async function init() {
 		uni.showLoading({
-			title: 'loading'
+			title: ''
 		});
 		const {
 			code,

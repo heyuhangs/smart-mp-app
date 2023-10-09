@@ -66,10 +66,11 @@
 
    async function init() {
    	const {code, data} = await courseInfo({id: id})
-
+    uni.showLoading({title: ''});
    	if (code === 200 && data) {
    		obj.value = data
 	    isShow.value = true
+		uni.hideLoading();
    	}
    }
 

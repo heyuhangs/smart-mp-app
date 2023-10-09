@@ -36,7 +36,7 @@
 	const isShow = ref(false)
 	const isActive = ref(0) // 0  取   1  存
 	async function init(index) {
-		uni.showLoading({title: 'loading'});
+		uni.showLoading({title: ''});
 		isShow.value = false
 		if (index === 1) {
 			const { code, data } = await getListSave()

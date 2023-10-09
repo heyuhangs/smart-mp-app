@@ -28,7 +28,7 @@
 	}
 	
 	async function init() {
-	  uni.showLoading({title: 'loading'});
+	  uni.showLoading({title: ''});
 	  const { code, data } = await elegantList({doorCustomType: 2})
 	  if (code === 200 && data) {
 	    list.value = data
