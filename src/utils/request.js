@@ -26,7 +26,7 @@ export async function request(params) {
         method: params.method || 'GET',
         header,
         success: (res) => {
-          if (res && res.code === 401) {
+          if (res && res.data && res.data.code === 401) {
             uni.showToast({ title: '登录失效', icon: 'none' })
             setTimeout(()=>{
               uni.reLaunch({
