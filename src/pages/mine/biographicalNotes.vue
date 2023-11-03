@@ -256,7 +256,6 @@
 
 			&__title {
 				font-size: 36rpx;
-				width: 50%;
 				font-weight: bold;
 				margin-top: 30rpx;
 			}
@@ -323,11 +322,11 @@
 			padding: 20rpx 50rpx;
 			margin: 50rpx 60rpx;
 			border-radius: 65rpx;
-			font-size: 40rpx;
+			font-size: 35rpx;
 
 			image {
-				width: 45rpx;
-				height: 50rpx;
+				width: 35rpx;
+				height: 40rpx;
 				margin-right: 20rpx;
 			}
 		}
