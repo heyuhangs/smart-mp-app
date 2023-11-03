@@ -90,11 +90,12 @@
 				rows.forEach((a, b) => {
 				    result[a.scheduleDate] = a.scheduleVoList
 				}) // 整理课程
+				console.log(result)
 				for (let date in dateList.value) {
 					for (let i in result) {
 						if (i === dateList.value[date]) {
 							result[i].forEach((item, index) => {
-								timetables.value[date][item.scheduleTime - 1] = item.courseName
+								timetables.value[date][item.scheduleTime - 1] = item.courseName === null ? item.classRoomName : item.courseName
 							})
 						}
 					}
