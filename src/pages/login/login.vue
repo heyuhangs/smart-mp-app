@@ -2,25 +2,15 @@
   <view class="t-login">
     <!-- 页面装饰图片 -->
     <image class="img-a" src="@/static/login/login_bg.png" />
-    <!-- <image class="img-b" src="@/static/3.png"></image> -->
-    <!-- 标题 -->
-    <!-- <view class="t-b">{{ title }}</view> -->
     <form class="cl">
       <view class="t-a">
-        <!-- <image src="@/static/sj.png"></image> -->
         <input type="number" name="studentNumber" placeholder="请输入学号" maxlength="99" v-model="studentNumber" />
       </view>
       <view class="t-a">
-        <!-- <image src="@/static/yz.png"></image> -->
         <input type="password" name="password" maxlength="18" placeholder="请输入密码" v-model="password" />
       </view>
       <button @tap="login()" :loading="loading">登 录</button>
     </form>
-    <!-- <view class="t-f"><text>————— 第三方账号登录 —————</text></view> -->
-    <!-- <view class="t-e cl">
-			<view class="t-g" @tap="wxLogin()"><image src="@/static/wx.png"></image></view>
-			<view class="t-g" @tap="zfbLogin()"><image src="@/static/qq.png"></image></view>
-		</view> -->
   </view>
 </template>
 
@@ -31,7 +21,7 @@ import { setToken } from '@/store/token'
 import { studentNumberLogin } from '@/service/login'
 import { initUserStore } from '@/modules/login'
 
-const studentNumber = ref('15804004038')
+const studentNumber = ref('admin')
 const password = ref('1Q2w3e4r5t')
 const loading = ref(false)
 

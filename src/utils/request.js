@@ -32,7 +32,7 @@ export async function request(params) {
               uni.reLaunch({
                 url: `/pages/login/login`
               })
-            }, 800)
+            }, 1000)
           }
           resolve(res)
         },
