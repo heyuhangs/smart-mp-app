@@ -41,8 +41,9 @@ export async function elegantInfo(params = {}) {
 export async function courseList(params = {}) {
   try {
     return await request({
-      url: `${env.api}/edu/course/list`,
-      method: 'get'
+      url: `${env.api}/edu/course/list?pageNum=` + params.pageNum + `&pageSize=` + params.pageSize,
+      method: 'get',
+			params: params
     })
   } catch (err) {
     return {

@@ -1,7 +1,15 @@
 <template>
-	<view v-show="isShow" class="course">
+	<view class="course">
 		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
 		<view v-else class="course__list">
+			<scroll-view
+			  scroll-y="true"
+			  :show-scrollbar="false"
+			  :refresher-enabled="scrollViewOptions.refresherEnabled"
+			  :refresher-triggered="scrollViewOptions.isRefresh"
+			  class="course__list__scroll"
+			  @refresherrefresh="onRefresh"
+			  @scrolltolower="onLoadMore">
 			<view v-for="item in list" class="course__list-item" @click="toInfo(item)">
 				<image
 				class="course__list-img"
@@ -13,7 +21,9 @@
 					<text class="course__list-desc" v-html="item.courseDesc" />
 				</view>
 			</view>
+			</scroll-view>
 		</view>
+		    
 	</view>
 </template>
 
@@ -28,20 +38,50 @@
 	import env from '@/host'
 
 	const list = ref([])
-	const isShow = ref(false)
+	const pageNum = ref(1)
+	const pageSize = ref(10)
+	const pageTotal = ref(0)
+	const scrollViewOptions = ref({
+	  refresherEnabled: true,
+	  isRefresh: false
+	})
 	async function init() {
 		uni.showLoading({title: ''});
 		const {
 			code,
-			rows
-		} = await courseList()
+			rows,
+			total
+		} = await courseList({pageNum: pageNum.value, pageSize: pageSize.value})
 		if (code === 200 && rows) {
-			list.value = rows
-			isShow.value = true
+			list.value = pageNum.value === 1 ? rows : list.value.concat(rows)
+			pageTotal.value = Math.ceil(total/pageSize.value)
 			uni.hideLoading();
 		}
 	}
 	init()
+	
+	async function onRefresh() {
+	  scrollViewOptions.value.isRefresh = true
+	  await refreshTalkList()
+      setTimeout(() => {
+          scrollViewOptions.value.isRefresh = false
+        }, 500)
+	}
+	
+	async function onLoadMore() {
+	  if (pageNum.value === pageTotal.value) {
+		  return
+	  } else {
+		  pageNum.value = pageNum.value + 1
+	  }
+	  await init()
+	}
+	
+	function refreshTalkList() {
+	  pageNum.value = 1
+	  init()
+	}
+
 
 	function toInfo(item) {
 		uni.navigateTo({
@@ -58,15 +98,24 @@
 		right: 0;
 		bottom: 0;
 		position: fixed;
-		overflow-y: scroll;
-		overflow-x: hidden;
+		display: flex;
+	    flex-direction: column;
+		overflow: hidden;
 
 		&__list {
 			box-sizing: border-box;
-			padding: 5rpx 38rpx 38rpx 38rpx;
+			padding: 5rpx 0 38rpx 0;
 			background-color: #ffffff;
 			border-radius: 20rpx;
 			min-height: calc(100vh - 42rpx);
+			
+			  &__scroll {
+			    box-sizing: border-box;
+			    display: flex;
+			    flex: 1;
+			    overflow: auto;
+			    height: 100%;
+			  }
 		}
 
 		&__list-item {
@@ -75,6 +124,7 @@
 			align-items: center;
 			flex-direction: row;
 			align-items: flex-start;
+			padding: 0 38rpx;
 		}
 
 		&__list-img {
