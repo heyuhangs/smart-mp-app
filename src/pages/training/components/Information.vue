@@ -73,25 +73,7 @@
 	const obj = ref({})
 	onMounted(() => {
 	  obj.value = props.obj
-	  init(obj.value)
 	});
-	async function init(item) {
-		const {code, data} = await trainingroomInfo({id: item.trainId})
-			
-		if (code === 200 && data) {
-			if (data.state === 'using') {
-				item.stateName = '在用'
-			} else if (data.state === 'appointed') {
-				data.stateName = '已约'
-			} else if (data.state === 'free') {
-				data.stateName = '空闲'
-			} else {
-				data.stateName = ''
-			}
-			obj.value = data
-			isShow.value = true
-		}
-	}
 </script>
 
 <style lang="scss" scoped>

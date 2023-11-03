@@ -1,7 +1,7 @@
 <template>
   <view class="training-info-introduce">
     <scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y">
-      <view v-html="obj.trainDesc" />
+      <view v-html="obj.remark" />
     </scroll-view>
   </view>
 </template>

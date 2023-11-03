@@ -41,7 +41,7 @@
 	init()
 	
   function toInfo(item) {
-    uni.navigateTo({url: '/pages/training/info?doorCustomId=' + item.doorCustomId})
+    uni.navigateTo({url: '/pages/training/info?trainId=' + item.trainId})
   }
 </script>
 

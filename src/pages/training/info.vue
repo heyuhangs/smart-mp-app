@@ -3,7 +3,7 @@
 		<image class="training-info__img"
 			:src="(obj.resourceUrl && obj.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.resourceUrl}` : `${obj.resourceUrl}`"
 			lazy-load="true" />
-		<view class="training-info__title">{{ obj.trainName }}</view>
+		<view class="training-info__title">{{ obj.name }}</view>
 
 		<view v-if="isShow" class="training-info__content">
 			<!--tab-->
@@ -34,6 +34,7 @@
 	import {
 		elegantInfo
 	} from '@/service/home'
+	import {trainingroomInfo} from '@/service/training'
 	import env from '@/host'
 	import {
 		onLoad
@@ -45,22 +46,26 @@
 		'实训室信息'
 	])
 	const obj = ref({})
-	let doorCustomId = null;
+	let trainId = null;
 	onLoad((option) => {
-		doorCustomId = option.doorCustomId
+		trainId = option.trainId
 	});
 	onMounted(() => {
 		init()
 	})
 	async function init() {
-		const {
-			code,
-			data
-		} = await elegantInfo({
-			doorCustomId: doorCustomId
-		})
-
+		const {code, data} = await trainingroomInfo({id: trainId})
+			
 		if (code === 200 && data) {
+			if (data.state === 'using') {
+				item.stateName = '在用'
+			} else if (data.state === 'appointed') {
+				data.stateName = '已约'
+			} else if (data.state === 'free') {
+				data.stateName = '空闲'
+			} else {
+				data.stateName = ''
+			}
 			obj.value = data
 			isShow.value = true
 		}
