@@ -52,8 +52,12 @@ const obj = ref(getUser())
 
 const avatar = computed(() => {
   const { avatar, sex } = obj.value
-  if (avatar) {
-    return `${env.imgUrl}${avatar}`
+  let newAvatar = ''
+  if (avatar && avatar.indexOf(`${env.imgUrl}`) === -1) {
+	newAvatar = avatar[0] === '/' ? avatar.slice(1) : avatar // 我的页面的头像url接收时带了 /  特殊处理
+    return `${env.imgUrl}${newAvatar}`
+  } else {
+	return `${avatar}`
   }
   if (`${sex}` === `0`) {
     return avatarMaleImage

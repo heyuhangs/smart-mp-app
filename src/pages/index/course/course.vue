@@ -3,7 +3,11 @@
 		<image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
 		<view v-else class="course__list">
 			<view v-for="item in list" class="course__list-item" @click="toInfo(item)">
-				<image class="course__list-img" :src="`${env.imgUrl}${item.courseCover}`" />
+				<image
+				class="course__list-img"
+				:src="(item.courseCover && item.courseCover.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.courseCover}` : `${item.courseCover}`" 
+				lazy-load="true"
+				/>
 				<view class="course__list-info">
 					<text class="course__list-title">{{item.courseName}}</text>
 					<text class="course__list-desc" v-html="item.courseDesc" />

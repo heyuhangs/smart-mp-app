@@ -4,8 +4,9 @@
 	  <image class="none" v-if="list.length === 0" src="@/static/training/none.png"></image>
       <view v-else class="training__list">
         <view v-for="(item, index) in list" class="training__list-item" @click="toInfo(item)">
-          <image class="training__img"  :src="`${env.imgUrl}${item.resourceUrl}`"
-            lazy-load="true" />
+			<image class="training__img"
+			:src="(item.resourceUrl && item.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.resourceUrl}` : `${item.resourceUrl}`" 
+			lazy-load="true" />
           <view class="training__c" :class="index%2===0 ? 'training__c__left' : 'training__c__right'">
             <span>{{ item.mainTitle }}</span>
           </view>

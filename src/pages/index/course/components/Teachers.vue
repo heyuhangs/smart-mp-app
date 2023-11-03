@@ -1,7 +1,11 @@
 <template>
   <view class="teacher-list">
     <view v-for="item in list" class="teacher-list__item">
-      <image class="teacher-list__img" :src="`${env.imgUrl}${item.avatar}`" />
+	  <image
+	  class="teacher-list__img"
+	  :src="(item.avatar && item.avatar.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.avatar}` : `${item.avatar}`" 
+	  lazy-load="true"
+	  />
       <view class="teacher-list__info">
         <text class="teacher-list__title">{{item.name}}	（{{item.schoolName}}）</text>
         <text class="teacher-list__desc" v-html="item.intro" />

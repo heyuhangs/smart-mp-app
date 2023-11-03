@@ -13,9 +13,11 @@
 
     <view class="brief-introduction__list">
       <view v-for="(item, index) in list" :key="index" class="brief-introduction__list-item" @click="toInfo(item)">
-        <image class="brief-introduction__img" :src="`${env.imgUrl}${item.resourceUrl}`" lazy-load="true" />
+        <image class="brief-introduction__img" 
+		:src="(item.resourceUrl && item.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.resourceUrl}` : `${item.resourceUrl}`" 
+		lazy-load="true" />
 
-        <view class="brief-introduction__c">{{ item.content }}</view>
+        <view class="brief-introduction__c" v-html="item.content" />
       </view>
     </view>
   </view>

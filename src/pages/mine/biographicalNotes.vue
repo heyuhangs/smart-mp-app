@@ -91,9 +91,14 @@
 			  data.age = jsGetAge(data.birth)
 		  }
 	    obj.value = data
-		
-		if (obj.value.avatar) { // 头像
-			avatarPath.value = `${env.imgUrl}${obj.avatar}`
+		let newAvatar = ''
+		if (obj.value.txUrl) { // 头像
+		   if (obj.value.txUrl.indexOf(`${env.imgUrl}`) === -1) {
+			   newAvatar = obj.value.txUrl[0] === '/' ? obj.value.txUrl.slice(1) : obj.value.txUrl // 我的页面的头像url接收时带了 /  特殊处理
+			   avatarPath.value = `${env.imgUrl}${newAvatar}`
+		   } else {
+			   avatarPath.value = `${obj.txUrl}`
+		   }
 		} else {
 			if (obj.value.sex === 0) {
 				avatarPath.value =  avatarMaleImage

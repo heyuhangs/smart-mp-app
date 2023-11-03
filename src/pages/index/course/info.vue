@@ -1,7 +1,10 @@
 <template>
   <view class="training-info">
-    <image class="training-info__img" :src="`${env.imgUrl}${obj.courseCover}`"
-      lazy-load="true" />
+	  <image
+	  class="training-info__img"
+	  :src="(obj.courseCover && obj.courseCover.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.courseCover}` : `${obj.courseCover}`" 
+	  lazy-load="true"
+	  />
     <view class="training-info__title">{{ obj.courseName }}</view>
 
     <view v-if="isShow" class="training-info__content">

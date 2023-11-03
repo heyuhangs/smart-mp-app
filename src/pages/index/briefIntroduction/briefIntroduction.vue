@@ -7,7 +7,9 @@
 					<text class="briefIntroduction__list-title">{{ item.mainTitle }}</text>
 					<text class="briefIntroduction__list-desc" v-html="item.content" />
 				</view>
-				<image class="briefIntroduction__list-img" :src="`${env.imgUrl}${item.resourceUrl}`" />
+				<image class="briefIntroduction__list-img"
+				:src="(item.resourceUrl && item.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.resourceUrl}` : `${item.resourceUrl}`" 
+				lazy-load="true" />
 			</view>
 		</view>
 	</view>

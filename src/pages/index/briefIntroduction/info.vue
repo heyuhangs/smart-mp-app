@@ -2,7 +2,9 @@
   <view class="briefIntroduction-info">
     <view class="briefIntroduction-info__main">
       <view class="briefIntroduction-info__title">{{ obj.mainTitle }}</view>
-      <image class="briefIntroduction-info__img" :src="`${env.imgUrl}${obj.resourceUrl}`" />
+	  <image class="briefIntroduction-info__img"
+	  :src="(obj.resourceUrl && obj.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.resourceUrl}` : `${obj.resourceUrl}`" 
+	  lazy-load="true" />
       <view class="briefIntroduction-info__content" v-html="obj.content" />
     </view>
   </view>
