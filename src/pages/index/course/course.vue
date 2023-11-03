@@ -6,7 +6,7 @@
 				<image class="course__list-img" :src="`${env.imgUrl}${item.courseCover}`" />
 				<view class="course__list-info">
 					<text class="course__list-title">{{item.courseName}}</text>
-					<text class="course__list-desc">{{item.courseDesc}}</text>
+					<text class="course__list-desc" v-html="item.courseDesc" />
 				</view>
 			</view>
 		</view>

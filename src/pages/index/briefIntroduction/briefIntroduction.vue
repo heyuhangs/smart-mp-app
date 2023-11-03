@@ -5,7 +5,7 @@
 			<view v-for="item in list" class="briefIntroduction__list-item" @click="toInfo(item)">
 				<view class="briefIntroduction__list-info">
 					<text class="briefIntroduction__list-title">{{ item.mainTitle }}</text>
-					<text class="briefIntroduction__list-desc">{{ item.content }}</text>
+					<text class="briefIntroduction__list-desc" v-html="item.content" />
 				</view>
 				<image class="briefIntroduction__list-img" :src="`${env.imgUrl}${item.resourceUrl}`" />
 			</view>

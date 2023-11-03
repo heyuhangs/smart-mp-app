@@ -1,9 +1,7 @@
 <template>
   <view class="training-info-introduce">
     <scroll-view :scroll-top="scrollTop" scroll-y="true" class="scroll-Y">
-      <view>
-       {{ obj.courseDesc }}
-      </view>
+      <view v-html="obj.courseDesc" />
     </scroll-view>
   </view>
 </template>

@@ -3,9 +3,7 @@
     <view class="briefIntroduction-info__main">
       <view class="briefIntroduction-info__title">{{ obj.mainTitle }}</view>
       <image class="briefIntroduction-info__img" :src="`${env.imgUrl}${obj.resourceUrl}`" />
-      <view class="briefIntroduction-info__content">
-        {{ obj.content }}
-      </view>
+      <view class="briefIntroduction-info__content" v-html="obj.content" />
     </view>
   </view>
 </template>

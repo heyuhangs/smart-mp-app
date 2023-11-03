@@ -5,9 +5,7 @@
       <view class="notice-info__msg">
         <view>{{ obj.createTime }}</view>
       </view>
-      <view class="notice-info__content">
-       {{ obj.content }}
-      </view>
+      <view class="notice-info__content" v-html="obj.content" />
     </view>
   </view>
 </template>

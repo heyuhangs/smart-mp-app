@@ -4,7 +4,7 @@
       <image class="teacher-list__img" :src="`${env.imgUrl}${item.avatar}`" />
       <view class="teacher-list__info">
         <text class="teacher-list__title">{{item.name}}	（{{item.schoolName}}）</text>
-        <text class="teacher-list__desc">{{item.intro}}</text>
+        <text class="teacher-list__desc" v-html="item.intro" />
       </view>
     </view>
   </view>
