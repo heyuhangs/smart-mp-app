@@ -8,7 +8,7 @@
 	  />
       <view class="teacher-list__info">
         <text class="teacher-list__title">{{item.name}}	（{{item.schoolName}}）</text>
-        <text class="teacher-list__desc" v-html="item.intro" />
+        <text class="teacher-list__desc">{{ item.intro }}</text>
       </view>
     </view>
   </view>
@@ -69,6 +69,7 @@
     &__title {
       font-size: 31rpx;
       font-weight: bold;
+      margin-top: 10rpx;
       color: #2c2c2c;
       white-space: nowrap;
       overflow: hidden;
@@ -76,12 +77,13 @@
     }
 
     &__desc {
-      font-size: 23rpx;
+      font-size: 24rpx;
       font-weight: 400;
-      line-height: 40rpx;
-      margin-top: 16rpx;
+      line-height: 35rpx;
+      margin-top: 10rpx;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: #999999;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
