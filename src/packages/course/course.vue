@@ -126,6 +126,7 @@ init().finally(() => {
 
   &__list-img {
     width: 140rpx;
+    min-width: 140rpx;
     height: 140rpx;
     margin-right: 28rpx;
     background-color: #f2f2f2;
@@ -140,16 +141,20 @@ init().finally(() => {
   }
 
   &__list-title {
+    width: 535rpx;
     font-size: 31rpx;
     font-weight: bold;
     color: #2c2c2c;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 12rpx;
+    margin-top: 10rpx;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
   }
 
   &__list-desc {
+    width: 535rpx;
     font-size: 23rpx;
     font-weight: 400;
     color: #999999;
