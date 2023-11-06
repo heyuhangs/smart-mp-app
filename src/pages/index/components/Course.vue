@@ -23,7 +23,7 @@
           lazy-load="true" />
         <view class="course__list-info">
           <text class="course__list-title">{{ item.courseName }}</text>
-          <text class="course__list-desc" v-html="item.courseDesc" />
+          <text class="course__list-desc" >{{ item.courseDesc }}</text>
         </view>
       </view>
     </view>
@@ -109,17 +109,17 @@ function toInfo(item) {
   }
 
   &__list-desc {
-    font-size: 23rpx;
+    width: 535rpx;
+    font-size: 24rpx;
     font-weight: 400;
     color: #999999;
-    line-height: 40rpx;
-    margin-top: 20rpx;
+    line-height: 34rpx;
+    margin-top: 10rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    text-indent: 50rpx;
   }
 }
 </style>

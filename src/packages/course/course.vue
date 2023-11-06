@@ -21,7 +21,7 @@
             lazy-load="true" />
           <view class="course__list-info">
             <text class="course__list-title">{{ item.courseName }}</text>
-            <text class="course__list-desc" v-html="item.courseDesc" />
+            <text class="course__list-desc" >{{ item.courseDesc }}</text>
           </view>
         </view>
       </scroll-view>
@@ -155,11 +155,11 @@ init().finally(() => {
 
   &__list-desc {
     width: 535rpx;
-    font-size: 23rpx;
+    font-size: 24rpx;
     font-weight: 400;
     color: #999999;
-    line-height: 40rpx;
-    margin-top: 20rpx;
+    line-height: 34rpx;
+    margin-top: 10rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
