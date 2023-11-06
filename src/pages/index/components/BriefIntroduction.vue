@@ -66,8 +66,9 @@ function toInfo(item) {
 	  padding-left: 26rpx;
     align-items: center;
     flex-direction: row;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    
     ::-webkit-scrollbar {
       width: 0;
       height: 0;

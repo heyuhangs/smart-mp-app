@@ -73,22 +73,22 @@
     &__title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 25rpx;
+      font-size: 32rpx;
       font-family: PingFang SC;
       font-weight: bold;
-      color: #000000;
+      color: #222;
     }
 
     &__time {
       padding-top: 14rpx;
-      font-size: 23rpx;
+      font-size: 27rpx;
       font-weight: 400;
       color: #a6a7a9;
     }
 
     &__icon {
-      width: 12rpx;
-      height: 21rpx;
+      width: 13rpx;
+      height: 23rpx;
     }
   }
 }
