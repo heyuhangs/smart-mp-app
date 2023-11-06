@@ -85,7 +85,7 @@
 
 	function toInfo(item) {
 		uni.navigateTo({
-			url: '/pages/index/course/info?id=' + item.id
+			url: '/packages/course/info?id=' + item.id
 		})
 	}
 </script>

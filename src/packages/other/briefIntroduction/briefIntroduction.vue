@@ -36,7 +36,7 @@
 
 	function toInfo(item) {
 		uni.navigateTo({
-			url: '/pages/index/briefIntroduction/info?doorCustomId=' + item.doorCustomId
+			url: '/packages/other/briefIntroduction/info?doorCustomId=' + item.doorCustomId
 		})
 	}
 </script>

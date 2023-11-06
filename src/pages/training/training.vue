@@ -25,7 +25,7 @@
 	const list = ref([])
 	const isShow = ref(false)
 	function toBriefIntroduction() {
-	  uni.navigateTo({ url: '/pages/index/briefIntroduction/briefIntroduction' })
+	  uni.navigateTo({ url: '/packages/other/briefIntroduction/briefIntroduction' })
 	}
 	
 	async function init() {

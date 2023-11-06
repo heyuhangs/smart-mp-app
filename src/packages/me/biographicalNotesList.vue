@@ -33,7 +33,7 @@
 	init()
 	
   function toInfo(item) {
-    uni.navigateTo({url: '/pages/mine/biographicalNotes?resumeId=' + item.resumeId})
+    uni.navigateTo({url: '/packages/me/biographicalNotes?resumeId=' + item.resumeId})
   }
 </script>
 

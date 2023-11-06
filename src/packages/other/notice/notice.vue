@@ -45,7 +45,7 @@
 
 	function toInfo(item) {
 		uni.navigateTo({
-			url: '/pages/index/notice/info?doorCustomId=' + item.doorCustomId
+			url: '/packages/other/info?doorCustomId=' + item.doorCustomId
 		})
 	}
 </script>

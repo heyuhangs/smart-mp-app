@@ -33,11 +33,11 @@
 	init()
 	
   function toNotice() {
-    uni.navigateTo({url: '/pages/index/notice/notice'})
+    uni.navigateTo({url: '/packages/other/notice'})
   }
   
   function toInfo(item) {
-    uni.navigateTo({url: '/pages/index/notice/info?doorCustomId=' + item.doorCustomId})
+    uni.navigateTo({url: '/packages/other/info?doorCustomId=' + item.doorCustomId})
   }
 </script>
 

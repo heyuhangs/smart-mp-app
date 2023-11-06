@@ -32,7 +32,7 @@ import env from '@/host'
 const list = ref([])
 
 function toBriefIntroduction() {
-  uni.navigateTo({ url: '/pages/index/briefIntroduction/briefIntroduction' })
+  uni.navigateTo({ url: '/packages/other/briefIntroduction/briefIntroduction' })
 }
 
 async function init() {
@@ -47,7 +47,7 @@ init()
 
 function toInfo(item) {
 	uni.navigateTo({
-		url: '/pages/index/briefIntroduction/info?doorCustomId=' + item.doorCustomId
+		url: '/packages/other/briefIntroduction/info?doorCustomId=' + item.doorCustomId
 	})
 }
 </script>
@@ -63,10 +63,11 @@ function toInfo(item) {
 
   &__list {
     display: flex;
-	padding-left: 26rpx;
+	  padding-left: 26rpx;
     align-items: center;
     flex-direction: row;
     overflow-y: scroll;
+    overflow-x: hidden;
     ::-webkit-scrollbar {
       width: 0;
       height: 0;

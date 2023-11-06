@@ -53,12 +53,15 @@ const obj = ref(getUser())
 const avatar = computed(() => {
   const { avatar, sex } = obj.value
   let newAvatar = ''
-  if (avatar && avatar.indexOf(`${env.imgUrl}`) === -1) {
-	newAvatar = avatar[0] === '/' ? avatar.slice(1) : avatar // 我的页面的头像url接收时带了 /  特殊处理
+  if(avatar){
+  if (avatar.indexOf(`${env.imgUrl}`) === -1) {
+	  newAvatar = avatar[0] === '/' ? avatar.slice(1) : avatar // 我的页面的头像url接收时带了 /  特殊处理
     return `${env.imgUrl}${newAvatar}`
   } else {
-	return `${avatar}`
+	  return `${avatar}`
   }
+}
+
   if (`${sex}` === `0`) {
     return avatarMaleImage
   }
@@ -67,19 +70,19 @@ const avatar = computed(() => {
 
 function toBiographicalNotesList() {
   uni.navigateTo({
-    url: '/pages/mine/biographicalNotesList'
+    url: '/packages/me/biographicalNotesList'
   })
 }
 
 function toCurriculum() {
   uni.navigateTo({
-    url: '/pages/mine/curriculum'
+    url: '/packages/me/curriculum'
   })
 }
 
 function toDevice() {
   uni.navigateTo({
-    url: '/pages/mine/device'
+    url: '/packages/me/device'
   })
 }
 

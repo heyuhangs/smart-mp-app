@@ -1,5 +1,6 @@
 {
-  "pages": [{
+  "pages": [
+    {
       "path": "pages/index/index",
       "style": {
         // "navigationBarTitleText": "首页",
@@ -36,96 +37,101 @@
         "navigationBarTitleText": "实训中心详情",
         "navigationBarBackgroundColor": "#206CFF"
       }
-    },
-    {
-      "path": "pages/index/course/course",
-      "style": {
-        "navigationBarTitleText": "课程简介",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/index/course/info",
-      "style": {
-        "navigationBarTitleText": "课程详情",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/index/notice/notice",
-      "style": {
-        "navigationBarTitleText": "基地要闻",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/index/notice/info",
-      "style": {
-        "navigationBarTitleText": "要闻详情",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/index/briefIntroduction/briefIntroduction",
-      "style": {
-        "navigationBarTitleText": "基地简介",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/index/briefIntroduction/info",
-      "style": {
-        "navigationBarTitleText": "简介详情",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/mine/biographicalNotes",
-      "style": {
-        "navigationBarTitleText": "个人简历",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
-    },
-    {
-      "path": "pages/mine/curriculum",
-      "style": {
-        "navigationBarTitleText": "课程课表",
-        "navigationBarBackgroundColor": "#206CFF"
-      }
-
     }
-      ,{
-            "path" : "pages/mine/device",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "设备存储",
-                "navigationBarBackgroundColor": "#206CFF"
-            }
-            
+  ],
+  "subPackages": [
+    {
+      "root": "packages/course",
+      "pages": [
+        {
+          "path": "course",
+          "style": {
+            "navigationBarTitleText": "课程简介",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "info",
+          "style": {
+            "navigationBarTitleText": "课程详情",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
         }
-        ,{
-            "path" : "pages/mine/biographicalNotesList",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "简历列表",
-                "navigationBarBackgroundColor": "#206CFF"
-            }
-            
+      ]
+    },
+    {
+      "root": "packages/other",
+      "pages": [
+        {
+          "path": "notice/notice",
+          "style": {
+            "navigationBarTitleText": "基地要闻",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "notice/info",
+          "style": {
+            "navigationBarTitleText": "要闻详情",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "briefIntroduction/briefIntroduction",
+          "style": {
+            "navigationBarTitleText": "基地简介",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "briefIntroduction/info",
+          "style": {
+            "navigationBarTitleText": "简介详情",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
         }
-    ],
-
+      ]
+    },
+    {
+      "root": "packages/me",
+      "pages": [
+        {
+          "path": "biographicalNotes",
+          "style": {
+            "navigationBarTitleText": "个人简历",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "curriculum",
+          "style": {
+            "navigationBarTitleText": "课程课表",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "device",
+          "style": {
+            "navigationBarTitleText": "设备存储",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        },
+        {
+          "path": "biographicalNotesList",
+          "style": {
+            "navigationBarTitleText": "简历列表",
+            "navigationBarBackgroundColor": "#206CFF"
+          }
+        }
+      ]
+    }
+  ],
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#4B52F1",
     "backgroundColor": "#ffffff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "./static/tabbar/home.png",
         "selectedIconPath": "./static/tabbar/home_active.png",

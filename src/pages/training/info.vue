@@ -1,7 +1,7 @@
 <template>
 	<view class="training-info">
 		<image class="training-info__img"
-			:src="(obj.resourceUrl && obj.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.resourceUrl}` : `${obj.resourceUrl}`"
+			:src="(obj.imageUrl && obj.imageUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.imageUrl}` : `${obj.imageUrl}`"
 			lazy-load="true" />
 		<view class="training-info__title">{{ obj.name }}</view>
 
