@@ -54,6 +54,7 @@
   margin-top: 42rpx;
   border-radius: 15rpx;
   min-height: calc(100vh - 42rpx);
+  padding-bottom: 75rpx;
 
     &__item {
       display: flex;

@@ -38,7 +38,10 @@ export async function elegantInfo(params = {}) {
 /* *
  *课程列表
  */
-export async function courseList(params = {}) {
+export async function courseList(params = {
+  pageNum: 1,
+  pageSize: 10,
+}) {
   try {
     return await request({
       url: `${env.api}/edu/course/list?pageNum=` + params.pageNum + `&pageSize=` + params.pageSize,

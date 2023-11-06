@@ -3,7 +3,12 @@
     <image class="notice__icon" src="@/static/home/notice_icon.png" />
 
     <swiper class="notice__swiper" :circular="true" vertical="true" :autoplay="true" :interval="50000" :duration="1000">
-      <swiper-item style="display: table" @touchmove.stop="stopTouchMove" v-for="(item, index) in list" :key="index" @click="toNotice()">
+      <swiper-item
+        style="display: table"
+        @touchmove.stop="stopTouchMove"
+        v-for="(item, index) in list"
+        :key="index"
+        @click="toNotice()">
         <view class="notice__item">
           <view class="notice__item-left">
             <text class="notice__item-title">{{ item.mainTitle }}</text>
@@ -17,28 +22,28 @@
 </template>
 
 <script setup>
-	import { ref } from 'vue'
-	
-	import { elegantList } from '@/service/home'
-	import env from '@/host'
-	
-	const list = ref([])
-	async function init() {
-	  const { code, data } = await elegantList({doorCustomType: 5})
-	
-	  if (code === 200 && data) {
-	    list.value = data
-	  }
-	}
-	init()
-	
-  function toNotice() {
-    uni.navigateTo({url: '/packages/other/notice'})
+import { ref } from 'vue'
+
+import { elegantList } from '@/service/home'
+import env from '@/host'
+
+const list = ref([])
+async function init() {
+  const { code, data } = await elegantList({ doorCustomType: 5 })
+
+  if (code === 200 && data) {
+    list.value = data
   }
-  
-  function toInfo(item) {
-    uni.navigateTo({url: '/packages/other/info?doorCustomId=' + item.doorCustomId})
-  }
+}
+init()
+
+function toNotice() {
+  uni.navigateTo({ url: '/packages/other/notice/notice' })
+}
+
+// function toInfo(item) {
+//   uni.navigateTo({url: '/packages/other/notice/info?doorCustomId=' + item.doorCustomId})
+// }
 </script>
 
 <style lang="scss" scoped>
