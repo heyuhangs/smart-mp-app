@@ -140,7 +140,12 @@ async function handleDownload() {
               setTimeout(() => {
                 uni.openDocument({
                   filePath: saveRes.savedFilePath,
-                  success: (m) => {}
+                  success: (m) => {
+                    console.log('文件打开成功')
+                  },
+                  fail: (e) => {
+                    console.log('文件打开失败')
+                  }
                 })
               }, 3000)
             },
