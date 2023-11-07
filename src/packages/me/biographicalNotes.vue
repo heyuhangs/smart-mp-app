@@ -126,34 +126,33 @@ async function handleDownload() {
   if (code === 200 && data) {
     uni.downloadFile({
       url: env.imgUrl + data.ossFilePath, //文件链接
-      success: (res) => {
-        var tempFilePath = res.tempFilePath
+      success: (downloadFileRes) => {
+        if (downloadFileRes.statusCode === 200) {
 
-        uni.saveFile({
-          tempFilePath: tempFilePath,
-          success: (rep) => {
-            var savedFilePath = rep.savedFilePath
-
-            uni.showToast({
-              icon: 'none',
-              mask: true,
-              title: '已下载至' + savedFilePath
-            })
-            setTimeout(() => {
-              uni.openDocument({
-                filePath: tempFilePath,
-                success: (m) => {}
+          uni.saveFile({
+            tempFilePath: downloadFileRes.tempFilePath,
+            success: (saveRes) => {
+              uni.showToast({
+                icon: 'none',
+                mask: true,
+                title: '已下载至' + saveRes.savedFilePath
               })
-            }, 3000)
-          },
-          fail: () => {
-            uni.showToast({
-              icon: 'none',
-              mask: true,
-              title: '保存失败'
-            })
-          }
-        })
+              setTimeout(() => {
+                uni.openDocument({
+                  filePath: saveRes.tempFilePath,
+                  success: (m) => {}
+                })
+              }, 3000)
+            },
+            fail: () => {
+              uni.showToast({
+                icon: 'none',
+                mask: true,
+                title: '保存失败'
+              })
+            }
+          })
+        }
       },
       fail: (err) => {
         uni.showToast({
