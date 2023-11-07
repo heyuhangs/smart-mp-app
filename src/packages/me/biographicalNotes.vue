@@ -139,7 +139,7 @@ async function handleDownload() {
               })
               setTimeout(() => {
                 uni.openDocument({
-                  filePath: saveRes.tempFilePath,
+                  filePath: saveRes.savedFilePath,
                   success: (m) => {}
                 })
               }, 3000)
