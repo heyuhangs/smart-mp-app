@@ -288,8 +288,10 @@ function jsGetAge(strBirthday) {
     display: inline-block;
     color: #5e5e5e;
     background-color: #f5f5f5;
-    padding: 5rpx 20rpx;
-    margin: 50rpx 5rpx 5rpx 5rpx;
+    padding: 6rpx 20rpx;
+    margin: 5rpx;
+    font-size: 28rpx;
+    border-radius: 10rpx;
   }
 
   &__icon {
