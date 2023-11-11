@@ -1,7 +1,7 @@
 <template>
 	<view class="training-info">
 		<image class="training-info__img"
-			:src="(obj.imageUrl && obj.imageUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.imageUrl}` : `${obj.imageUrl}`"
+			:src="imageUrlPath"
 			lazy-load="true" />
 		<view class="training-info__title">{{ obj.name }}</view>
 
@@ -46,6 +46,7 @@
 		'实训室信息'
 	])
 	const obj = ref({})
+  const imageUrlPath = ref('')
 	let trainId = null;
 	onLoad((option) => {
 		trainId = option.trainId
@@ -55,10 +56,20 @@
 	})
 	async function init() {
 		const {code, data} = await trainingroomInfo({id: trainId})
-			
+
 		if (code === 200 && data) {
+      let newAvatar = ''
+      if (data.imageUrl) {
+        // 头像
+        if (data.imageUrl.indexOf(`${env.imgUrl}`) === -1) {
+          newAvatar = data.imageUrl[0] === '/' ? data.imageUrl.slice(1) : data.imageUrl // url接收时带了 /  特殊处理
+          imageUrlPath.value = `${env.imgUrl}${newAvatar}`
+        } else {
+          imageUrlPath.value = data.imageUrl
+        }
+      }
 			if (data.state === 'using') {
-				item.stateName = '在用'
+				data.stateName = '在用'
 			} else if (data.state === 'appointed') {
 				data.stateName = '已约'
 			} else if (data.state === 'free') {
