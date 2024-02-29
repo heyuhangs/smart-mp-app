@@ -51,6 +51,7 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-3080720230703001",
     "@dcloudio/uni-mp-weixin": "3.0.0-3080720230703001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3080720230703001",
+    "uview-plus": "^3.1.45",
     "vue": "^3.2.45",
     "vue-i18n": "^9.1.9"
   },
@@ -63,14 +64,14 @@
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "vite": "4.1.4",
     "path": "^0.12.7",
+    "prettier": "^2.7.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
-    "prettier": "^2.7.1",
     "stylelint": "^14.14.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-recommended-vue": "^1.4.0",
-    "stylelint-config-standard-scss": "^6.0.0"
+    "stylelint-config-standard-scss": "^6.0.0",
+    "vite": "4.1.4"
   }
 }

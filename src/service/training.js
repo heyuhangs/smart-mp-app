@@ -17,3 +17,40 @@ export async function trainingroomInfo(params = {}) {
     }
   }
 }
+
+
+/* *
+ * 获取开关列表
+ */
+export async function trainingSwitchList(id) {
+  try {
+    return await request({
+      url: `${env.api}/trainingroom/selectSwitch/${id}`,
+      method: 'get'
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
+
+
+/* *
+ * 开关控制
+ */
+export async function trainingSwitch(data = {}) {
+  try {
+    return await request({
+      url: `${env.api}/trainingroom/switchControl`,
+      method: 'put',
+      data
+    })
+  } catch (err) {
+    return {
+      code: 500,
+      msg: '登录失败'
+    }
+  }
+}
