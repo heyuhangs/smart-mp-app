@@ -21,8 +21,8 @@ import { setToken } from '@/store/token'
 import { studentNumberLogin } from '@/service/login'
 import { initUserStore } from '@/modules/login'
 
-const studentNumber = ref('admin')
-const password = ref('1Q2w3e4r5t')
+const studentNumber = ref('')//admin
+const password = ref('') //1Q2w3e4r5t
 const loading = ref(false)
 
 async function login() {

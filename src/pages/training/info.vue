@@ -1,8 +1,6 @@
 <template>
 	<view class="training-info">
-		<image class="training-info__img"
-			:src="(obj.imageUrl && obj.imageUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${obj.imageUrl}` : `${obj.imageUrl}`"
-			lazy-load="true" />
+		<image class="training-info__img" :src="imageUrlPath" lazy-load="true" />
 		<view class="training-info__title">{{ obj.name }}</view>
 
 
@@ -54,17 +52,12 @@
 
 <script setup>
 import {
-	ref,
-	onMounted
+	ref
 } from 'vue'
 import uSwitch from "uview-plus/components/u-switch/u-switch.vue";
 
 import controlImage from '@/static/training/control.png'
 import lamplightImage from '@/static/training/lamplight.png'
-
-import {
-	elegantInfo
-} from '@/service/home'
 import { trainingroomInfo, trainingSwitchList, trainingSwitch } from '@/service/training'
 import env from '@/host'
 import {
@@ -73,7 +66,6 @@ import {
 
 import Introduce from './components/Introduce.vue'
 import Information from './components/Information.vue'
-
 
 
 var tabBars = ref([
@@ -86,6 +78,7 @@ const displayState = ref(false)
 const mainGate = ref(0)
 const lampGate = ref(0)
 const switchLoading = ref(false)
+const imageUrlPath = ref('')
 
 let trainId = null;
 
@@ -98,6 +91,16 @@ async function init() {
 	const [{ code, data }] = await Promise.all([trainingroomInfo({ id: trainId }), getSwitchList()])
 
 	if (code === 200 && data) {
+		let newAvatar = ''
+		if (data.imageUrl) {
+			// 头像
+			if (data.imageUrl.indexOf(`${env.imgUrl}`) === -1) {
+				newAvatar = data.imageUrl[0] === '/' ? data.imageUrl.slice(1) : data.imageUrl // url接收时带了 /  特殊处理
+				imageUrlPath.value = `${env.imgUrl}${newAvatar}`
+			} else {
+				imageUrlPath.value = data.imageUrl
+			}
+		}
 		if (data.state === 'using') {
 			item.stateName = '在用'
 		} else if (data.state === 'appointed') {

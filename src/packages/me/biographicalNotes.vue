@@ -58,7 +58,7 @@
 
     <view class="biographicalNotes__button" @click="handleDownload()">
       <image class="biographicalNotes__icon__annex" src="@/static/mine/annex.png" />
-      <view>导出简历</view>
+      <view>生成附件简历</view>
     </view>
   </view>
 </template>
