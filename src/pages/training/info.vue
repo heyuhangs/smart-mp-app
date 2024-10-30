@@ -97,8 +97,8 @@ async function init() {
 		if (data.imageUrl) {
 			// 头像
 			if (data.imageUrl.indexOf(`${env.imgUrl}`) === -1) {
-				newAvatar = data.imageUrl[0] === '/' ? data.imageUrl.slice(1) : data.imageUrl // url接收时带了 /  特殊处理
-				imageUrlPath.value = `${env.imgUrl}${newAvatar}`
+				newAvatar = data.imageUrl[0] === '/' ? data.imageUrl : `/${data.imageUrl}`
+				imageUrlPath.value = `${env.imgUrl}${data.imageUrl}`
 			} else {
 				imageUrlPath.value = data.imageUrl
 			}

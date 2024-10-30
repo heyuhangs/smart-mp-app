@@ -55,8 +55,8 @@ const avatar = computed(() => {
   let newAvatar = ''
   if (avatar) {
     if (avatar.indexOf(`${env.imgUrl}`) === -1) {
-      newAvatar = avatar[0] === '/' ? avatar.slice(1) : avatar // 我的页面的头像url接收时带了 /  特殊处理
-      return `${env.imgUrl}${newAvatar}`
+      newAvatar = avatar[0] === '/' ?  avatar : `/${avatar}`
+      return `${env.imgUrl}${avatar}`
     } else {
       return `${avatar}`
     }
