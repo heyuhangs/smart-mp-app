@@ -4,7 +4,7 @@
     <image class="img-a" src="@/static/login/login_bg.png" />
     <form class="cl">
       <view class="t-a">
-        <input type="number" name="studentNumber" placeholder="请输入学号" maxlength="99" v-model="studentNumber" />
+        <input name="studentNumber" placeholder="请输入学号" maxlength="99" v-model="studentNumber" />
       </view>
       <view class="t-a">
         <input type="password" name="password" maxlength="18" placeholder="请输入密码" v-model="password" />
@@ -59,7 +59,10 @@ async function login() {
   } catch (e) {
     uni.showToast({ title: '登录失败', icon: 'none' })
   } finally {
-    loading.value = false
+
+    setTimeout(() => {
+      loading.value = false
+    }, 1500)
   }
 }
 </script>

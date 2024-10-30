@@ -103,7 +103,6 @@
       width: 100%;
       height: 400rpx;
 			background-color: #f2f2f2;
-			border-radius: 13rpx;
     }
 
     &__title {

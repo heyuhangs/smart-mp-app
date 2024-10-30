@@ -1,13 +1,13 @@
 export const buildEnv = import.meta.env.VITE_BUILD_ENV
 
 const devEnv = {
-  api: 'http://124.70.178.58:8199/api',
-  imgUrl: 'http://124.70.178.58:9000/'
+  api: 'https://www.beisuo0451.com:8299/api',
+  imgUrl: 'https://www.beisuo0451.com:8299/api'
 }
 
 const productionEnv = {
-  api: 'http://124.70.178.58:8199/api',
-  imgUrl: 'http://124.70.178.58:9000/'
+  api: 'https://www.beisuo0451.com:8299/api',
+  imgUrl: 'https://www.beisuo0451.com:8299/api'
 }
 
 const env = (function getEnv() {

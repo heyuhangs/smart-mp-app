@@ -4,7 +4,7 @@
     <view v-else class="notice__list">
       <view v-for="(item, index) in list" :key="index" class="notice__list__item" @click="toInfo(item)">
         <view class="notice__list__content">
-          <text class="notice__list__title">{{ item.mainTitle }}</text>
+          <view class="notice__list__title">{{ item.mainTitle }}</view>
           <text class="notice__list__time">{{ item.createTime }}</text>
         </view>
         <image class="notice__list__icon" src="@/static/basic/back.png" />
@@ -77,12 +77,15 @@ function toInfo(item) {
     }
 
     &__title {
-      text-overflow: ellipsis;
-      white-space: nowrap;
       font-size: 32rpx;
       font-family: PingFang SC;
       font-weight: bold;
       color: #222;
+      width: 650rpx;
+      max-width: 650rpx;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis
     }
 
     &__time {

@@ -8,7 +8,7 @@
 			:src="(item.resourceUrl && item.resourceUrl.indexOf(`${env.imgUrl}`) === -1) ? `${env.imgUrl}${item.resourceUrl}` : `${item.resourceUrl}`" 
 			lazy-load="true" />
           <view class="training__c" :class="index%2===0 ? 'training__c__left' : 'training__c__right'">
-            <span>{{ item.mainTitle }}</span>
+            <span class="training__c__label">{{ item.mainTitle }}</span>
           </view>
         </view>
       </view>
@@ -116,8 +116,9 @@
         right: 0;
         transform: rotateY(180deg);
 
-        span {
+        .training__c__label{
           transform: rotateY(180deg);
+
         }
       }
     }

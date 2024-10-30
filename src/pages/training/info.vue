@@ -61,7 +61,8 @@ import lamplightImage from '@/static/training/lamplight.png'
 import { trainingroomInfo, trainingSwitchList, trainingSwitch } from '@/service/training'
 import env from '@/host'
 import {
-	onLoad
+	onLoad,
+	onUnload
 } from "@dcloudio/uni-app";
 
 import Introduce from './components/Introduce.vue'
@@ -81,6 +82,7 @@ const switchLoading = ref(false)
 const imageUrlPath = ref('')
 
 let trainId = null;
+let timer = null;
 
 onLoad((option) => {
 	trainId = option.trainId
@@ -130,7 +132,7 @@ async function getSwitchList() {
 
 
 function trainingData() {
-	setInterval(() => {
+	timer = setInterval(() => {
 		getSwitchList()
 	}, 2000)
 }
@@ -206,6 +208,10 @@ function setSwitchStatus(type, status) {
 	if (type === 0) mainGate.value = status
 	if (type === 1) lampGate.value = status
 }
+
+onUnload(() => {
+	timer && clearInterval(timer);
+})
 </script>
 
 <style lang="scss" scoped>
